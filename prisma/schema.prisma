@@ -1,0 +1,1186 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  password  String
+  role      String   @default("user")
+  phone     String?
+  city      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  applications Application[]
+  requests     UserRequest[]
+
+  @@map("users")
+}
+
+// Application model for pre-assessment forms
+model Application {
+  id        String   @id @default(cuid())
+  status    String   @default("submitted") // submitted, processing, completed, rejected
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  adminComment String?
+
+  // Payment
+  isPaid         Boolean  @default(false)
+  paymentAmount  Int?
+  paidAt         DateTime?
+
+  // Application progress
+  currentStage   Int      @default(1)
+  totalStages    Int      @default(10)
+  
+  // Individual form completion status
+  isFirstFormCompleted                    Boolean @default(false)
+  isSecondFormCompleted                   Boolean @default(false)
+  isThirdFormCompleted                    Boolean @default(false)
+  isFourthFormCompleted                   Boolean @default(false)
+  isFifthFormCompleted                    Boolean @default(false)
+  isSixthFormCompleted                      Boolean @default(false)
+  isSeventhFormCompleted                      Boolean @default(false)
+  isEighthFormCompleted                       Boolean @default(false)
+  isNinthFormCompleted                        Boolean @default(false)
+  isTenthFormCompleted                        Boolean @default(false)
+  
+  // Individual questionnaire completion flags (for Stage 3 combination)
+  isParentGuardianFormCompleted           Boolean @default(false)
+  isCaregiverFormCompleted                Boolean @default(false)
+  isOutsiderFormCompleted                 Boolean @default(false)
+
+  // Parent/Guardian Information
+  parentFullName    String
+  parentEmail       String
+  parentPhone       String?
+  relationToChild   String?
+  parentCity        String?
+  parentEthnicity   String?
+
+  // Child Information
+  childFullName        String
+  childDateOfBirth     DateTime?
+  childAge             Int?
+  childGender          String?
+  childEthnicity       String?
+  childSchoolYear      String?
+  childCurrentSchool   String?
+  childSchoolType      String?
+  childSchoolTypeOther String?
+  childDiagnosedNeeds  String?
+
+  // Caregiver/Nanny Information
+  caregiverFullName String?
+  caregiverPhone    String?
+
+  // Parent Questions
+  qExcitesMost         String
+  qNonTraditionalReason String
+  qBiggestHope         String
+  enjoysTech           String
+  enjoysHandsOn        String
+
+  // Consent
+  consentContact   Boolean
+  consentUpdates   Boolean
+  consentBiometric Boolean?
+
+  // Relations
+  userId Int?
+  user   User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  screeningCall ScreeningCall?
+  parentGuardianQuestionnaire ParentGuardianQuestionnaire?
+  caregiverQuestionnaire CaregiverQuestionnaire?
+  outsiderQuestionnaire OutsiderQuestionnaire?
+  facilityWalkthroughChecklist FacilityWalkthroughChecklist?
+  initialObservationForm InitialObservationForm?
+  guidedObservationsProcedure GuidedObservationsProcedure?
+  ks1InterviewQuestions KS1InterviewQuestions?
+  ks2InterviewQuestions KS2InterviewQuestions?
+  peerDynamicObservation PeerDynamicObservation?
+  parentChildDynamicObservation ParentChildDynamicObservation?
+  comprehensiveProfileSheet ComprehensiveProfileSheet?
+
+  @@map("applications")
+}
+
+// User Applications/Requests tracking
+model UserRequest {
+  id          String   @id @default(cuid())
+  type        String   // "Application Review Request", "Password Setup", "Profile Information"
+  description String
+  status      String   @default("pending") // pending, completed, rejected
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_requests")
+}
+
+// Screening Call model for storing screening call data
+model ScreeningCall {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // General Information
+  fullName        String
+  childName       String
+  date            DateTime
+  callerName      String
+  crmLeadTag      String? // Hot, Warm, Cold
+
+  // Introduction
+  recordingPermission String? // Yes, No
+  introductionNotes   String?
+
+  overviewNotes String?
+
+  // Parent Warm-Up Questions
+  applicationReason     String?
+  currentSchoolIssues   String?
+  techResponseAtHome     String?
+  parentWarmUpNotes     String?
+
+  // Fit Clarification
+  flexibleModelOpenness String?
+  childFreeTime         String?
+  adaptiveTechComfort   String?
+  fitClarificationNotes String?
+
+  // General Notes
+  generalNotes String?
+
+  // Parent Reactions
+  parentReactionsNotes String?
+
+  // Next Steps
+  comprehensiveQuestionnaires Boolean @default(false)
+  guidebookInfo               Boolean @default(false)
+  walkthroughDate             String?
+  assessmentInvite            String?
+  additionalNotes             String?
+
+  // Relations
+  applicationId String  @unique
+  loggedToSystemDate String?
+  loggedBy String?
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("screening_calls")
+}
+
+// Parent Guardian Questionnaire model
+model ParentGuardianQuestionnaire {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // General Information
+  fullName        String
+  childName       String
+  date            DateTime
+
+  // Family Environment & Routine
+  typicalWeekday      String
+  screenTimeHours     String
+  homeActivities      String
+
+  // Cultural Background
+  culturalBackground  String
+
+  // Rules and Discipline
+  rulesDisciplineApproach String
+  supportWhenStruggling   String
+
+  // Learning and Development
+  strengthsInterests           String
+  challengingAreas             String
+  learningApproach             String
+  previousEducationalExperience String
+
+  // COVID Learning Experience
+  covidLearningExperience      String
+  supportiveLearningEnvironment String
+
+  // Emotional and Social Awareness
+  responseToFrustration        String
+  peerInteraction              String
+  emotionalBehavioralConcerns  String
+  seekingHelp                  String
+
+  // Educational Philosophy
+  educationalHopesGoals                String
+  creativityMovementEmotionalRole      String
+  parentingStyle                        String
+  technologyConcerns                   String
+
+  // Office Use Only
+  applicationNumber     String?
+  loggedToSystemDate   String?
+  loggedBy             String?
+
+  // Relations
+  applicationId String  @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("parent_guardian_questionnaires")
+}
+
+// Caregiver Questionnaire model
+model CaregiverQuestionnaire {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // General Information
+  fullName        String
+  childName       String
+  date            DateTime
+
+  // Daily Care Context
+  careDuration    String
+  regularActivities String
+  behaviorWithoutParent String
+
+  // Learning and Play Behaviour
+  toysGamesTasksEnjoyed String
+  preferences String
+  responseToDifficulties String
+  engagementWithChosenActivity String
+  engagementWithAssignedActivity String
+
+  // Social & Emotional Response
+  interactionWithChildren String
+  seekingHelpComfort String
+  emotionalRegulationStrategies String
+  emotionalStrengthsVulnerabilities String
+
+  // Office Use Only
+  applicationNumber     String?
+  loggedToSystemDate   String?
+  loggedBy             String?
+
+  // Relations
+  applicationId String  @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("caregiver_questionnaires")
+}
+
+// Outsider Questionnaire model
+model OutsiderQuestionnaire {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // General Information
+  fullName        String
+  childName       String
+  date            DateTime
+
+  // Relationship Context
+  relationshipToChild String
+  interactionContext String
+
+  // Learning Traits & Emotional Presentation
+  learningTendenciesCuriosity String
+  emotionalTraits String
+  adaptationToChanges String
+
+  // Social Behaviour & Communication
+  communicationSkills String
+  groupBehavior String
+  concernsNotes String
+  emotionalStrengthsVulnerabilities String
+
+  // Office Use Only
+  applicationNumber     String?
+  loggedToSystemDate   String?
+  loggedBy             String?
+
+  // Relations
+  applicationId String  @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("outsider_questionnaires")
+}
+
+// Facility Walkthrough Checklist model
+model FacilityWalkthroughChecklist {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // General Information
+  examinerName String
+  date         DateTime
+
+  // Checklist Items
+  welcomeOverviewCompleted Boolean @default(false)
+  tourLearningZonesCompleted Boolean @default(false)
+  technologyDemonstrationCompleted Boolean @default(false)
+  safetySecurityMeasuresCompleted Boolean @default(false)
+  qaSessionCompleted Boolean @default(false)
+  scheduleAssessmentDatesCompleted Boolean @default(false)
+
+  // Additional Notes
+  welcomeOverviewNotes String
+  tourLearningZonesNotes String
+  technologyDemonstrationNotes String
+  safetySecurityMeasuresNotes String
+  qaSessionNotes String
+  scheduleAssessmentDatesNotes String
+ 
+
+  // Office Use Only
+  applicationNumber     String?
+  loggedToSystemDate   String?
+  loggedBy             String?
+
+  // Relations
+  applicationId String  @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("facility_walkthrough_checklists")
+}
+
+// Initial Observation Form model
+model InitialObservationForm {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Child Information
+  fullName String
+  age      String
+
+  // Zone-Based Engagement Grid
+  zoneATimeSpent String
+  zoneASelfDirected String
+  zoneAObservations String
+  zoneAEngagementLevel String
+  zoneAKeyBehavioursNotes String
+
+  zoneBTimeSpent String
+  zoneBSelfDirected String
+  zoneBObservations String
+  zoneBEngagementLevel String
+  zoneBKeyBehavioursNotes String
+
+  zoneCTimeSpent String
+  zoneCSelfDirected String
+  zoneCObservations String
+  zoneCEngagementLevel String
+  zoneCKeyBehavioursNotes String
+
+  zoneDTimeSpent String
+  zoneDSelfDirected String
+  zoneDObservations String
+  zoneDEngagementLevel String
+  zoneDKeyBehavioursNotes String
+
+  // Meta Learning Skill Indicators
+  selfRegulationObserved String
+  selfRegulationBehaviourNotes String
+  curiosityObserved String
+  curiosityBehaviourNotes String
+  socialEngagementObserved String
+  socialEngagementBehaviourNotes String
+  emotionalRegulationObserved String
+  emotionalRegulationBehaviourNotes String
+  confidenceAutonomyObserved String
+  confidenceAutonomyBehaviourNotes String
+
+  // Learning Preference & Intelligence Summary
+  linguisticEvidence String
+  linguisticSupportingObservation String
+  logicalMathematicalEvidence String
+  logicalMathematicalSupportingObservation String
+  spatialEvidence String
+  spatialSupportingObservation String
+  bodilyKinestheticEvidence String
+  bodilyKinestheticSupportingObservation String
+  musicalEvidence String
+  musicalSupportingObservation String
+  interpersonalEvidence String
+  interpersonalSupportingObservation String
+  intrapersonalEvidence String
+  intrapersonalSupportingObservation String
+  naturalisticEvidence String
+  naturalisticSupportingObservation String
+
+  // Parent-Child Dynamic Snapshot
+  parentProximity String
+  parentInterventionLevel String
+  parentInterventionStyle String
+  childIndependenceLevel String
+  childEmotionalPresentationWithParent String
+  childIndependenceWhenParentEngaged String
+  emotionalRegulationWithParentPresent String
+
+  // Examiner Summary (Qualitative)
+  mostEngagedZone String
+  dominantObservedIntelligences String
+  initialLearningStyleImpressions String
+  earlyFlagsNeedsFollowUp String
+  selfDirectedVsSeekingGuidance String
+  flagIndicators String
+  additionalNotesObservations String
+
+  // Office Use Only
+  applicationNumber     String?
+  loggedToSystemDate   String?
+  loggedBy             String?
+
+  // Relations
+  applicationId String  @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("initial_observation_forms")
+}
+
+// Guided Observations Procedure (Stage 6)
+model GuidedObservationsProcedure {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Child Information
+  fullName String
+  age      String
+
+  // Ratings Grid (per zone)
+  zoneAScore String
+  zoneANotes String
+  zoneBScore String
+  zoneBNotes String
+  zoneCScore String
+  zoneCNotes String
+  zoneDScore String
+  zoneDNotes String
+
+  // Guiding Questions answers
+  // Legacy kept for compatibility
+  guidingQ1 String?
+  guidingQ2 String?
+  guidingQ3 String?
+  guidingQ4 String?
+  guidingQ5 String?
+  // New semantic fields
+  areaLikeBest         String?
+  whatMakesInteresting String?
+  hardButFun           String?
+  feelWhenTryingNew    String?
+  teachGame            String?
+
+  // Meta Learning Skill Indicators (scores 1-5 + notes optional)
+  metaSelfReg String
+  metaNotesSelfReg String?
+  metaCuriosity String
+  metaNotesCuriosity String?
+  metaSocial String
+  metaNotesSocial String?
+  metaEmotional String
+  metaNotesEmotional String?
+  metaConfidence String
+  metaNotesConfidence String?
+
+  // Intelligence & Learning Type Check‑In (supporting observation notes)
+  intelLinguistic String?
+  intelLogical String?
+  intelSpatial String?
+  intelBodily String?
+  intelMusical String?
+  intelInterpersonal String?
+  intelIntrapersonal String?
+  intelNaturalistic String?
+  intelExistential String?
+  // Intelligence evidence flags (✓ moderate, + strong)
+  intelLinguisticEvidenceModerate Boolean? @default(false)
+  intelLinguisticEvidenceStrong   Boolean? @default(false)
+  intelLogicalEvidenceModerate    Boolean? @default(false)
+  intelLogicalEvidenceStrong      Boolean? @default(false)
+  intelSpatialEvidenceModerate    Boolean? @default(false)
+  intelSpatialEvidenceStrong      Boolean? @default(false)
+  intelBodilyEvidenceModerate     Boolean? @default(false)
+  intelBodilyEvidenceStrong       Boolean? @default(false)
+  intelMusicalEvidenceModerate    Boolean? @default(false)
+  intelMusicalEvidenceStrong      Boolean? @default(false)
+  intelInterpersonalEvidenceModerate Boolean? @default(false)
+  intelInterpersonalEvidenceStrong   Boolean? @default(false)
+  intelIntrapersonalEvidenceModerate Boolean? @default(false)
+  intelIntrapersonalEvidenceStrong   Boolean? @default(false)
+  intelNaturalisticEvidenceModerate  Boolean? @default(false)
+  intelNaturalisticEvidenceStrong    Boolean? @default(false)
+  intelExistentialEvidenceModerate   Boolean? @default(false)
+  intelExistentialEvidenceStrong     Boolean? @default(false)
+
+  // Parent–Child Dynamic Snapshot
+  parentProximity String?
+  parentInterventionLevel String?
+  parentInterventionStyle String?
+  childIndependenceLevel String?
+  childEmotionalWithParent String?
+  childIndependenceWhenParentEngaged String?
+  emotionalRegulationWithParentPresent String?
+
+  // Examiner Final Comments
+  mostEngagedZone String?
+  dominantObservedIntelligences String?
+  initialLearningStyleImpressions String?
+  earlyFlagsNeedsFollowUp String?
+  selfDirectedVsSeekingGuidance String?
+  finalAdditionalNotes String?
+
+  // Interaction summary table (Stage 6 continued)
+  interactionPreferredZone String?
+  interactionInitialBehaviour String?
+  interactionOpennessToAdultGuidance String?
+  interactionMostRevealingActivity String?
+  interactionCrossRefStep5 String?
+  interactionCuriosityExploration String?
+  interactionFocusAttention String?
+  interactionEngagementWithAdult String?
+  interactionResilienceInChallenge String?
+  interactionEmotionRegulationSignals String?
+  interactionCaregiverInteractionStyle String?
+  interactionRecommendations String?
+
+  // Office Use Only
+  applicationNumber     String?
+  observerName          String?
+  assessmentDate        String?
+  loggedToSystemDate    String?
+  loggedBy              String?
+
+  // Relation
+  applicationId String @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("guided_observations_procedures")
+}
+
+// KS1 Interview Questions (Stage 7a)
+model KS1InterviewQuestions {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Child Information
+  fullName String
+  age      String
+
+  // Interview Questions (1-14)
+  whatDoYouDoSomethingHard Int? // Growth mindset & perseverance
+  whatDoYouDoSomethingHardNotes String?
+  
+  howDoYouFeelWhenTryNew Int? // Emotional awareness & regulation
+  howDoYouFeelWhenTryNewNotes String?
+  
+  whatWouldYouDoIfFriendSad Int? // Empathy & social reasoning
+  whatWouldYouDoIfFriendSadNotes String?
+  
+  tellMeAboutFavouriteStory Int? // Narrative & communication skills
+  tellMeAboutFavouriteStoryNotes String?
+  
+  favouriteThingToLearn Int? // (Question 5 details from image)
+  favouriteThingToLearnNotes String?
+  
+  whatElseUcanDoWithASpoonOtherThanEat Int? // (Question 6 details from image)
+  whatElseUcanDoWithASpoonOtherThanEatNotes String?
+  
+  howShareCookiesBetweenFriends Int? // Problem-solving & fairness
+  howShareCookiesBetweenFriendsNotes String?
+  
+  puzzleActivity Int? // (Question 8 details from image)
+  puzzleActivityNotes String?
+  
+  tableInteraction Int? // (Question 9 details from image)
+  tableInteractionNotes String?
+  
+  drawSomethingYouInvent Int? // Imagination & expression
+  drawSomethingYouInventNotes String?
+  
+  doYouLikeLearnByListening String? // Learning preference awareness (not scored)
+  
+  canYouSortShapesByColor Int? // Motor coordination & logic
+  canYouSortShapesByColorNotes String?
+  
+  canYouTeachMeDrawMummy Int? // Communication clarity & social confidence
+  canYouTeachMeDrawMummyNotes String?
+  
+  doYouLikePlayingWithFriends Int? // Social openness & preference
+  doYouLikePlayingWithFriendsNotes String?
+
+  // Parental Interference
+  parentalInterferenceFlagged Boolean @default(false)
+  parentalInterferenceNotes   String?
+
+  // Total Score
+  totalScore Int?
+
+  // Office Use Only
+  applicationNumber String?
+  observerName      String?
+  assessmentDate    String?
+  loggedToSystemDate String?
+  loggedBy          String?
+
+  // Relation
+  applicationId String @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("ks1_interview_questions")
+}
+
+model KS2InterviewQuestions {
+  id                String   @id @default(cuid())
+  applicationId     String   @unique
+  application       Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  
+  // Child Information
+  fullName          String?
+  age               String?
+  
+  // Interview Questions (1-20)
+  // Questions 1-6
+  somethingAlwaysWantedToLearn Int?
+  somethingAlwaysWantedToLearnNotes String?
+  
+  fiveThingsWithPaperclip Int?
+  fiveThingsWithPaperclipNotes String?
+  
+  finishSchoolworkEarly Int?
+  finishSchoolworkEarlyNotes String?
+  
+  logicChallenge Int?
+  logicChallengeNotes String?
+  
+  somethingHard Int?
+  somethingHardNotes String?
+  
+  answerIsWrong Int?
+  answerIsWrongNotes String?
+  
+  // Questions 7-14
+  favouriteThingOnComputer Int?
+  favouriteThingOnComputerNotes String?
+  
+  likeWorkingWithOthers Int?
+  likeWorkingWithOthersNotes String?
+  
+  drawMachineInvention Int?
+  drawMachineInventionNotes String?
+  
+  confidenceTryingNewThings Int?
+  confidenceTryingNewThingsNotes String?
+  
+  helpedSomeoneLearn Int?
+  helpedSomeoneLearnNotes String?
+  
+  magicWandMakesSmarter Int?
+  magicWandMakesSmarterNotes String?
+  
+  explainInternetToPast Int?
+  explainInternetToPastNotes String?
+  
+  inChargeOfWorld Int?
+  inChargeOfWorldNotes String?
+  
+  // Questions 15-20
+  threeThingsGoodAt Int?
+  threeThingsGoodAtNotes String?
+  
+  somethingGetBetterAt Int?
+  somethingGetBetterAtNotes String?
+  
+  inventJobDoesntExist Int?
+  inventJobDoesntExistNotes String?
+  
+  learningPreference String? // Not scored - record answer
+  
+  digitalTasks Int?
+  digitalTasksNotes String?
+  
+  playingWithFriends Int?
+  playingWithFriendsNotes String?
+  
+  // Parental Interference
+  parentalInterferenceFlagged Boolean @default(false)
+  parentalInterferenceNotes String?
+  
+  // Total Score
+  totalScore Int?
+  
+  // Office Use Only
+  applicationNumber String?
+  observerName String?
+  assessmentDate String?
+  loggedToSystemDate String?
+  loggedBy String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("ks2_interview_questions")
+}
+
+model PeerDynamicObservation {
+  id                String   @id @default(cuid())
+  applicationId     String   @unique
+  application       Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  
+  // Observation Details
+  childName         String?
+  date              String?
+  examiner          String?
+  age               String?
+  sessionStartTime  String?
+  sessionEndTime    String?
+  
+  // Behavioural Skill Assessment (1-5 ratings)
+  leadershipRating        Int?
+  leadershipNotes        String?
+  collaborationRating    Int?
+  collaborationNotes     String?
+  conflictResolutionRating Int?
+  conflictResolutionNotes String?
+  communicationRating    Int?
+  communicationNotes     String?
+  emotionalRegulationRating Int?
+  emotionalRegulationNotes String?
+  empathyRating          Int?
+  empathyNotes           String?
+  adaptabilityRating     Int?
+  adaptabilityNotes      String?
+  initiativeRating       Int?
+  initiativeNotes        String?
+  
+  // Meta Learning Skill Alignment (Yes/No observations)
+  curiosityObserved       Boolean @default(false)
+  curiosityNotes          String?
+  confidenceObserved      Boolean @default(false)
+  confidenceNotes         String?
+  selfRegulationObserved  Boolean @default(false)
+  selfRegulationNotes     String?
+  collaborationObserved   Boolean @default(false)
+  collaborationObservedNotes String?
+  emotionalAwarenessObserved Boolean @default(false)
+  emotionalAwarenessNotes String?
+  leadershipObserved      Boolean @default(false)
+  leadershipObservedNotes String?
+  problemSolvingObserved  Boolean @default(false)
+  problemSolvingNotes     String?
+  perspectiveTakingObserved Boolean @default(false)
+  perspectiveTakingNotes  String?
+  
+  // Learning Preference & Intelligence Inference
+  linguisticObserved      Boolean @default(false)
+  linguisticStronglyEvident Boolean @default(false)
+  linguisticNotes          String?
+  logicalMathematicalObserved Boolean @default(false)
+  logicalMathematicalStronglyEvident Boolean @default(false)
+  logicalMathematicalNotes String?
+  spatialObserved          Boolean @default(false)
+  spatialStronglyEvident   Boolean @default(false)
+  spatialNotes             String?
+  bodilyKinestheticObserved Boolean @default(false)
+  bodilyKinestheticStronglyEvident Boolean @default(false)
+  bodilyKinestheticNotes   String?
+  musicalObserved          Boolean @default(false)
+  musicalStronglyEvident   Boolean @default(false)
+  musicalNotes             String?
+  interpersonalObserved    Boolean @default(false)
+  interpersonalStronglyEvident Boolean @default(false)
+  interpersonalNotes      String?
+  intrapersonalObserved   Boolean @default(false)
+  intrapersonalStronglyEvident Boolean @default(false)
+  intrapersonalNotes       String?
+  naturalisticObserved     Boolean @default(false)
+  naturalisticStronglyEvident Boolean @default(false)
+  naturalisticNotes        String?
+  existentialObserved      Boolean @default(false)
+  existentialStronglyEvident Boolean @default(false)
+  existentialNotes         String?
+  
+  // Learning Style Clues
+  visualObserved           Boolean @default(false)
+  visualNotes              String?
+  auditoryObserved         Boolean @default(false)
+  auditoryNotes            String?
+  kinestheticObserved      Boolean @default(false)
+  kinestheticNotes         String?
+  verbalObserved           Boolean @default(false)
+  verbalNotes              String?
+  socialObserved           Boolean @default(false)
+  socialNotes              String?
+  solitaryObserved         Boolean @default(false)
+  solitaryNotes            String?
+  
+  // Social Role Tendency (multiple selections allowed)
+  leaderRole               Boolean @default(false)
+  withdrawnRole            Boolean @default(false)
+  problemSolverRole        Boolean @default(false)
+  followerRole             Boolean @default(false)
+  initiatorRole            Boolean @default(false)
+  bridgerRole              Boolean @default(false)
+  observerRole             Boolean @default(false)
+  supporterRole            Boolean @default(false)
+  challengerRole           Boolean @default(false)
+  mediatorRole             Boolean @default(false)
+  
+  // Summary Reflections
+  notableStrengths         String?
+  areasOfConcern           String?
+  situationsChildThrived   String?
+  situationsChallenging   String?
+  suggestedFollowUp        String?
+  caregiverInteraction     String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("peer_dynamic_observation")
+}
+
+model ParentChildDynamicObservation {
+  id                String   @id @default(cuid())
+  applicationId     String   @unique
+  application       Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  
+  // Child Information
+  childFullName     String?
+  childAge          String?
+  
+  // Joint Story Creation (10 minutes)
+  sharedIdeaExchangeRating     Int?
+  sharedIdeaExchangeNotes      String?
+  emotionalWarmthRating        Int?
+  emotionalWarmthNotes         String?
+  balanceOfLeadershipRating    Int?
+  balanceOfLeadershipNotes     String?
+  communicationStyleRating     Int?
+  communicationStyleNotes      String?
+  mutualCreativityRating      Int?
+  mutualCreativityNotes       String?
+  
+  // Separation - Child Continues Solo (10 minutes)
+  independenceRating           Int?
+  independenceNotes            String?
+  confidenceHesitationRating   Int?
+  confidenceHesitationNotes   String?
+  taskEngagementRating        Int?
+  taskEngagementNotes         String?
+  creativeExpansionRating     Int?
+  creativeExpansionNotes       String?
+  
+  // Teaching Moment - Comic Strip (10 minutes)
+  teachingStyleRating          Int?
+  teachingStyleNotes           String?
+  patienceEncouragementRating  Int?
+  patienceEncouragementNotes  String?
+  parentClarityRating          Int?
+  parentClarityNotes           String?
+  childEngagementRating       Int?
+  childEngagementNotes         String?
+  
+  // Parenting Style & Dynamic Insights
+  parentDominantStyleDirective     Boolean @default(false)
+  parentDominantStyleSupportive    Boolean @default(false)
+  parentDominantStyleDetached      Boolean @default(false)
+  parentDominantStyleFacilitative  Boolean @default(false)
+  
+  emotionalAttunementHigh      Boolean @default(false)
+  emotionalAttunementModerate  Boolean @default(false)
+  emotionalAttunementLow       Boolean @default(false)
+  
+  encouragementStylePraiseFocused     Boolean @default(false)
+  encouragementStyleProcessFocused    Boolean @default(false)
+  encouragementStyleCorrectionFocused Boolean @default(false)
+  
+  attachmentSignalSecure      Boolean @default(false)
+  attachmentSignalAnxious     Boolean @default(false)
+  attachmentSignalAvoidant    Boolean @default(false)
+  attachmentSignalDisengaged  Boolean @default(false)
+  
+  // Child Meta-Skills During Assessment
+  confidenceAutonomyObserved  Boolean @default(false)
+  confidenceAutonomyNotes     String?
+  emotionalRegulationObserved Boolean @default(false)
+  emotionalRegulationNotes     String?
+  curiosityObserved            Boolean @default(false)
+  curiosityNotes               String?
+  creativityExpressionObserved Boolean @default(false)
+  creativityExpressionNotes    String?
+  selfDirectedLearningObserved Boolean @default(false)
+  selfDirectedLearningNotes    String?
+  communicationObserved        Boolean @default(false)
+  communicationNotes           String?
+
+  // Learning Type & Intelligence Clues
+  linguisticObserved           Boolean @default(false)
+  linguisticStronglyEvident    Boolean @default(false)
+  linguisticNotes              String?
+  logicalMathematicalObserved Boolean @default(false)
+  logicalMathematicalStronglyEvident Boolean @default(false)
+  logicalMathematicalNotes     String?
+  spatialObserved              Boolean @default(false)
+  spatialStronglyEvident       Boolean @default(false)
+  spatialNotes                 String?
+  bodilyKinestheticObserved    Boolean @default(false)
+  bodilyKinestheticStronglyEvident Boolean @default(false)
+  bodilyKinestheticNotes       String?
+  musicalObserved              Boolean @default(false)
+  musicalStronglyEvident       Boolean @default(false)
+  musicalNotes                 String?
+  interpersonalObserved        Boolean @default(false)
+  interpersonalStronglyEvident Boolean @default(false)
+  interpersonalNotes           String?
+  intrapersonalObserved        Boolean @default(false)
+  intrapersonalStronglyEvident Boolean @default(false)
+  intrapersonalNotes           String?
+  naturalisticObserved         Boolean @default(false)
+  naturalisticStronglyEvident  Boolean @default(false)
+  naturalisticNotes            String?
+  existentialObserved          Boolean @default(false)
+  existentialStronglyEvident   Boolean @default(false)
+  existentialNotes             String?
+  
+  // Dynamic Summary & Reflection
+  parentChildDynamicStandout  String?
+  childExpressiveWithWithoutParent String?
+  parentGuidanceHindrance     String?
+  
+  // Red Flags or Follow-up Needs
+  emotionalDistressFlag       Boolean @default(false)
+  parentOverDirectionFlag     Boolean @default(false)
+  confidenceIssueFlag         Boolean @default(false)
+  noFlagsFlag                 Boolean @default(false)
+  redFlagsNotes               String?
+  
+  // Office Use Only
+  applicationNumber            String?
+  observerName                String?
+  assessmentDate              String?
+  loggedToSystemDate          String?
+  loggedBy                    String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("parent_child_dynamic_observation")
+}
+
+model ComprehensiveProfileSheet {
+  id                String   @id @default(cuid())
+  applicationId     String   @unique
+  application       Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  
+  // Child Information
+  childName         String?
+  childAge          String?
+  assessmentDate    String?
+  recommendedPlacement String?
+  examiner          String?
+  
+  // Cognitive Skills Profile
+  processingSpeedSteadyReflective     Boolean @default(false)
+  processingSpeedFlexibleAdaptive    Boolean @default(false)
+  processingSpeedRapidResponsive     Boolean @default(false)
+  
+  workingMemoryAreaOfGrowth          Boolean @default(false)
+  workingMemoryDeveloping            Boolean @default(false)
+  workingMemoryConsistentConfident   Boolean @default(false)
+  
+  attentionFocusVariable             Boolean @default(false)
+  attentionFocusFocusedWithCues      Boolean @default(false)
+  attentionFocusSelfDirected         Boolean @default(false)
+  
+  verbalReasoningExploring           Boolean @default(false)
+  verbalReasoningDeveloping          Boolean @default(false)
+  verbalReasoningFluentCommunicator  Boolean @default(false)
+  
+  phonologicalAwarenessExploring     Boolean @default(false)
+  phonologicalAwarenessLinking       Boolean @default(false)
+  phonologicalAwarenessConfident     Boolean @default(false)
+  
+  visualSpatialSkillsExploring       Boolean @default(false)
+  visualSpatialSkillsDeveloping     Boolean @default(false)
+  visualSpatialSkillsConfident      Boolean @default(false)
+  
+  numericalPatternConcrete           Boolean @default(false)
+  numericalPatternEmergingAbstract  Boolean @default(false)
+  numericalPatternFlexibleThinker    Boolean @default(false)
+  
+  additionalCognitiveNotes           String?
+  
+  // Learning Style Preference
+  visualObserved                     Boolean @default(false)
+  visualObservedEvidence             String?
+  auditoryObserved                   Boolean @default(false)
+  auditoryObservedEvidence           String?
+  kinestheticTactileObserved         Boolean @default(false)
+  kinestheticTactileObservedEvidence String?
+  readingWritingObserved             Boolean @default(false)
+  readingWritingObservedEvidence     String?
+  verbalLinguisticObserved           Boolean @default(false)
+  verbalLinguisticObservedEvidence   String?
+  logicalMathematicalObserved        Boolean @default(false)
+  logicalMathematicalObservedEvidence String?
+  socialInterpersonalObserved        Boolean @default(false)
+  socialInterpersonalObservedEvidence String?
+  solitaryIntrapersonalObserved      Boolean @default(false)
+  solitaryIntrapersonalObservedEvidence String?
+  multimodalObserved                 Boolean @default(false)
+  multimodalObservedEvidence         String?
+  
+  // Dominant Intelligence Types
+  linguisticObserved                  Boolean @default(false)
+  linguisticStronglyEvident          Boolean @default(false)
+  linguisticNotes                    String?
+  logicalMathematicalObservedInt     Boolean @default(false)
+  logicalMathematicalStronglyEvidentInt Boolean @default(false)
+  logicalMathematicalNotesInt        String?
+  spatialObserved                    Boolean @default(false)
+  spatialStronglyEvident             Boolean @default(false)
+  spatialNotes                       String?
+  bodilyKinestheticObserved          Boolean @default(false)
+  bodilyKinestheticStronglyEvident  Boolean @default(false)
+  bodilyKinestheticNotes            String?
+  musicalObserved                    Boolean @default(false)
+  musicalStronglyEvident             Boolean @default(false)
+  musicalNotes                       String?
+  interpersonalObserved              Boolean @default(false)
+  interpersonalStronglyEvident       Boolean @default(false)
+  interpersonalNotes                 String?
+  intrapersonalObserved              Boolean @default(false)
+  intrapersonalStronglyEvident       Boolean @default(false)
+  intrapersonalNotes                 String?
+  naturalisticObserved               Boolean @default(false)
+  naturalisticStronglyEvident        Boolean @default(false)
+  naturalisticNotes                  String?
+  existentialObserved                Boolean @default(false)
+  existentialStronglyEvident        Boolean @default(false)
+  existentialNotes                   String?
+  
+  // Meta-Learning Pillars & Soft Skills Profile
+  summaryInsightLearnerType          String?
+  summaryInsightLearningEnvironments String?
+  
+  selfRegulationEmerging             Boolean @default(false)
+  selfRegulationDeveloping           Boolean @default(false)
+  selfRegulationStrong               Boolean @default(false)
+  selfRegulationNotesEvidence        String?
+  
+  emotionalIntelligenceEmerging      Boolean @default(false)
+  emotionalIntelligenceDeveloping    Boolean @default(false)
+  emotionalIntelligenceStrong        Boolean @default(false)
+  emotionalIntelligenceNotesEvidence String?
+  
+  socialCommunicationEmerging        Boolean @default(false)
+  socialCommunicationDeveloping      Boolean @default(false)
+  socialCommunicationStrong          Boolean @default(false)
+  socialCommunicationNotesEvidence   String?
+  
+  cognitiveFlexibilityEmerging       Boolean @default(false)
+  cognitiveFlexibilityDeveloping     Boolean @default(false)
+  cognitiveFlexibilityStrong         Boolean @default(false)
+  cognitiveFlexibilityNotesEvidence  String?
+  
+  resilienceConfidenceEmerging      Boolean @default(false)
+  resilienceConfidenceDeveloping     Boolean @default(false)
+  resilienceConfidenceStrong         Boolean @default(false)
+  resilienceConfidenceNotesEvidence  String?
+  
+  creativityExpressionEmerging       Boolean @default(false)
+  creativityExpressionDeveloping     Boolean @default(false)
+  creativityExpressionStrong         Boolean @default(false)
+  creativityExpressionNotesEvidence  String?
+  
+  softSkillSummaryNotes             String?
+  
+  // Academic & Digital Readiness
+  englishCurrentLevel                String?
+  englishNotes                       String?
+  mathsCurrentLevel                  String?
+  mathsNotes                         String?
+  scienceCurrentLevel                String?
+  scienceNotes                       String?
+  
+  technologyUseLow                   Boolean @default(false)
+  technologyUseModerate              Boolean @default(false)
+  technologyUseHigh                  Boolean @default(false)
+  technologyUseExceptional           Boolean @default(false)
+  
+  academicNotes                      String?
+  
+  // Interview-Based Verbal Assessment Summary
+  zonesADPreferredZones              String?
+  zonesADSelfDirectedOrReliant       String?
+  zonesADResponseToChallenge         String?
+  zonesADEvidenceDominantIntelligence String?
+  
+  peerSessionInitiateOrFollow        String?
+  peerSessionRoleAdopted             String?
+  peerSessionConflictHandled         String?
+  
+  parentChildEmotionalTone           String?
+  parentChildFacilitativeVsDirective String?
+  parentChildResponseWorkingSolo     String?
+  
+  ks1Score                           Int?
+  ks1InterpretationEmerging          Boolean @default(false)
+  ks1InterpretationBasic             Boolean @default(false)
+  ks1InterpretationStrong            Boolean @default(false)
+  ks1InterpretationExceptional       Boolean @default(false)
+  ks1SuggestedAction                 String?
+  
+  ks2Score                           Int?
+  ks2InterpretationEmerging          Boolean @default(false)
+  ks2InterpretationBasic             Boolean @default(false)
+  ks2InterpretationStrong            Boolean @default(false)
+  ks2InterpretationExceptional       Boolean @default(false)
+  ks2SuggestedAction                 String?
+  
+  qualitativeInsightsVerbalResponses String?
+  
+  // Component Recommendations
+  aiCurriculumEntryPoint             String?
+  peerEngagementGroupLearning        Boolean @default(false)
+  peerEngagementNeedsScaffolding     Boolean @default(false)
+  peerEngagementMonitorConflict      Boolean @default(false)
+  mentorshipLeadershipPotential      Boolean @default(false)
+  mentorshipRecommendOneOnOne        Boolean @default(false)
+  mentorshipNotApplicable            Boolean @default(false)
+  homeSupportTips                    String?
+  
+  // Final Summary Statement
+  finalSummaryStrengths              String?
+  finalSummaryApproaches             String?
+  finalSummaryTargetedSupport        String?
+  compiledBy                         String?
+  compiledDate                       String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("comprehensive_profile_sheet")
+}
