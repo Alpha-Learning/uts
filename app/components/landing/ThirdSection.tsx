@@ -128,7 +128,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
               </motion.div>
 
               {/* Additional benefits */}
-              <motion.div
+              {/* <motion.div
                 className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -165,7 +165,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
 
             {/* Enhanced Image Section */}
