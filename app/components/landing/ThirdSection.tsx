@@ -17,7 +17,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
   };
 
   return (
-    <section id="waiting-list" className="py-20 lg:py-24 bg-white relative overflow-hidden">
+    <section id="waiting-list" className="py-20 lg:py-2 lg:pb-16 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-teal-100 rounded-full opacity-20"></div>
