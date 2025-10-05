@@ -71,7 +71,7 @@ export default function Home() {
   }, []);
 
   return (  
- <div>
+ <div id="top">
   <Header />
   <VideoSection />
   <FirstSection scrollY={scrollY} />

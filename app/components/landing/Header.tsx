@@ -7,6 +7,19 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [activeId, setActiveId] = useState<string>('top');
+  
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (targetId === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setActiveId(targetId);
+    setMobileOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,13 +66,13 @@ export default function Header() {
             }`}>
               <li>
                 <a className={`font-semibold transition-colors duration-300 ${
-                  scrollY > 100 ? 'text-teal-600' : 'text-teal-200'
-                }`} href="#">Home</a>
+                  activeId === 'top' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-teal-200')
+                }`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a>
               </li>
               <li>
                 <a className={`transition-colors duration-300 ${
-                  scrollY > 100 ? 'hover:text-teal-600' : 'hover:text-white'
-                }`} href="#">Mission</a>
+                  activeId === 'services' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-white')
+                }`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a>
               </li>
              
             </ul>
@@ -77,13 +90,13 @@ export default function Header() {
               <ul className="flex items-center gap-10">
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    scrollY > 100 ? 'hover:text-teal-600' : 'hover:text-white'
-                  }`} href="#">Waiting List</a>
+                    activeId === 'waiting-list' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-white')
+                  }`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a>
                 </li>
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    scrollY > 100 ? 'hover:text-teal-600' : 'hover:text-white'
-                  }`} href="#">Contact Us</a>
+                    activeId === 'contact' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-white')
+                  }`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
                 </li>
                
               </ul>
@@ -114,16 +127,16 @@ export default function Header() {
         {mobileOpen && (
           <div className="px-4 pb-4">
             <ul className="grid grid-cols-1 gap-3">
-              <li><a className="text-teal-600 font-semibold" href="#">Home</a></li>
+              <li><a className={`${activeId === 'top' ? 'text-teal-600 font-semibold' : 'font-semibold'}`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                scrollY > 100 ? 'text-gray-800' : 'text-white'
-              }`} href="#">Mission</a></li>
+                activeId === 'services' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+              }`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                scrollY > 100 ? 'text-gray-800' : 'text-white'
-              }`} href="#">Waiting List</a></li>
+                activeId === 'waiting-list' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+              }`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                scrollY > 100 ? 'text-gray-800' : 'text-white'
-              }`} href="#">Contact Us</a></li>
+                activeId === 'contact' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+              }`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a></li>
              
             </ul>
           </div>
