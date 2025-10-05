@@ -66,7 +66,7 @@ export default function Header() {
 
             {/* Center logo */}
             <div className="flex items-center justify-center">
-              <img src="/logo.png" alt="logo" className="w-22 h-16" />
+              <img src="/logo.png" alt="logo" className="w-18 h-12" />
              
             </div>
 
@@ -105,17 +105,23 @@ export default function Header() {
             </svg>
           </button>
 
-          <img src="/logo.png" alt="logo" className="w-14 h-10" />
+          <img src="/logo.png" alt="logo" className="w-16 h-12" />
 
          <div></div>
         </div>
         {mobileOpen && (
           <div className="px-4 pb-4">
-            <ul className="grid grid-cols-1 gap-3 text-white">
+            <ul className="grid grid-cols-1 gap-3">
               <li><a className="text-teal-600 font-semibold" href="#">Home</a></li>
-              <li className='text-black font-medium'><a href="#">Mission</a></li>
-              <li className='text-black font-medium'><a href="#">Waiting List</a></li>
-              <li className='text-black font-medium'><a href="#">Contact Us</a></li>
+              <li><a className={`font-medium transition-colors duration-300 ${
+                scrollY > 100 ? 'text-gray-800' : 'text-white'
+              }`} href="#">Mission</a></li>
+              <li><a className={`font-medium transition-colors duration-300 ${
+                scrollY > 100 ? 'text-gray-800' : 'text-white'
+              }`} href="#">Waiting List</a></li>
+              <li><a className={`font-medium transition-colors duration-300 ${
+                scrollY > 100 ? 'text-gray-800' : 'text-white'
+              }`} href="#">Contact Us</a></li>
              
             </ul>
           </div>
