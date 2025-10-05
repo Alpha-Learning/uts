@@ -105,7 +105,7 @@ export default function Header() {
             </svg>
           </button>
 
-          <img src="/logo.png" alt="logo" className="w-14 h-12" />
+          <img src="/logo.png" alt="logo" className="w-14 h-10" />
 
          <div></div>
         </div>
@@ -113,10 +113,9 @@ export default function Header() {
           <div className="px-4 pb-4">
             <ul className="grid grid-cols-1 gap-3 text-white">
               <li><a className="text-teal-600 font-semibold" href="#">Home</a></li>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Mission</a></li>
-              <li><a href="#">Waiting List</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li className='text-black font-medium'><a href="#">Mission</a></li>
+              <li className='text-black font-medium'><a href="#">Waiting List</a></li>
+              <li className='text-black font-medium'><a href="#">Contact Us</a></li>
              
             </ul>
           </div>
