@@ -75,7 +75,7 @@ export default function Home() {
   <Header />
   <VideoSection />
   <FirstSection scrollY={scrollY} />
-  <img src="c.png" alt="" className="w-full h-[500px] object-cover" />
+  <img src="/f.png" alt="" className="w-full h-[320px] md:h-[660px] object-cover" />
   <SecondSection scrollY={scrollY} />
   <ThirdSection scrollY={scrollY} />
   {/* <LocationMap /> */}

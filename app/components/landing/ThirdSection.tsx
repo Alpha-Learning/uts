@@ -49,7 +49,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
                 </motion.div>
 
                 <motion.p 
-                  className="text-xl text-gray-600 leading-relaxed max-w-2xl"
+                  className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed text-justify sm:text-left max-w-2xl"
                   style={{ fontFamily: 'Jost, sans-serif' }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

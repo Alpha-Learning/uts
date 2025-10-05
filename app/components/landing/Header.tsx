@@ -93,7 +93,7 @@ export default function Header() {
         </nav>
       </div>
       {/* Mobile */}
-      <div className="lg:hidden">
+      <div className="lg:hidden ">
         <div className="h-16 px-4 flex items-center justify-between">
           <button
             aria-label="Toggle menu"
@@ -105,9 +105,11 @@ export default function Header() {
             </svg>
           </button>
 
-          <img src="/logo.png" alt="logo" className="w-16 h-12" />
 
-         <div></div>
+          <img src="/logo.png" alt="logo" className="w-16 h-12  mr-5"  />
+         <div>
+
+         </div>
         </div>
         {mobileOpen && (
           <div className="px-4 pb-4">

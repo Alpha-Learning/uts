@@ -63,7 +63,7 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   <img 
-                    src="/a.jpeg" 
+                    src="/e.jpeg" 
                     alt="Classroom with teacher and student" 
                     className="w-full h-full object-cover"
                   />
@@ -78,7 +78,7 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <img 
-                    src="/b.png" 
+                    src="/d.jpeg" 
                     alt="Art studio with children painting" 
                     className="w-full h-full object-cover"
                   />

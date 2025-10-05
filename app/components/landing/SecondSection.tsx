@@ -21,7 +21,7 @@ export default function SecondSection({ scrollY }: { scrollY: number }) {
             >
               <div>
               
-                 <h2 className="text-4xl lg:text-5xl text-center font-medium text-[#222222] mt-4 mb-6 uppercase leading-tight" style={{ fontFamily: 'LeBeauneNew, serif' }}>
+                 <h2 className="text-4xl lg:text-4xl text-center font-medium text-[#222222] mt-4 mb-6 uppercase leading-tight" style={{ fontFamily: 'LeBeauneNew, serif' }}>
                    MISSION
                  </h2>
                  <p className="text-lg text-black leading-relaxed text-justify lg:text-left mb-8" style={{ fontFamily: 'Jost, sans-serif' }}>
@@ -40,9 +40,9 @@ export default function SecondSection({ scrollY }: { scrollY: number }) {
                   transition={{ duration: 0.3, delay: 0.2 }}
                 >
                   <img 
-                    src="/b.png" 
+                    src="/g.png" 
                     alt="Additional classroom scene" 
-                    className="w-full h-[500px] object-cover"
+                    className="w-full h-[320px] md:h-[660px] object-cover"
                   />
                 </motion.div>
       </div>
