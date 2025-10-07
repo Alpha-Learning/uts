@@ -32,7 +32,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            Waiting List
+            WAITING LIST
 
           </motion.h2>
 
@@ -73,7 +73,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                 />
                 <button
                   type="submit"
-                  className="px-5 sm:px-7 py-3 sm:py-5 rounded-full bg-[#192951] text-white font-semibold text-sm sm:text-base whitespace-nowrap min-w-[110px]"
+                  className="px-5 sm:px-7 py-3 sm:py-5  bg-[#192951] text-white font-semibold text-sm sm:text-base whitespace-nowrap min-w-[110px]"
                   style={{ fontFamily: 'LeBeauneNew, serif' }}
                 >
                   Submit
