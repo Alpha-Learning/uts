@@ -55,7 +55,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="flex items-center bg-white shadow-md border-t rounded-full overflow-hidden w-full">
+              <div className="flex items-center bg-white shadow-md border-t  rounded-full overflow-hidden w-full">
                 <div className="flex items-center pl-4 pr-2 text-gray-400">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 7.5v9a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 16.5v-9A2.25 2.25 0 014.5 5.25h15a2.25 2.25 0 012.25 2.25z" />
@@ -73,7 +73,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                 />
                 <button
                   type="submit"
-                  className="px-5 sm:px-7 py-3 sm:py-4 rounded-full bg-[#192951] text-white font-semibold text-sm sm:text-base whitespace-nowrap min-w-[110px]"
+                  className="px-5 sm:px-7 py-3 sm:py-5 rounded-full bg-[#192951] text-white font-semibold text-sm sm:text-base whitespace-nowrap min-w-[110px]"
                   style={{ fontFamily: 'LeBeauneNew, serif' }}
                 >
                   Submit
