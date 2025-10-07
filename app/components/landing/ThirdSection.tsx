@@ -55,9 +55,9 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="flex items-center bg-white shadow-md border-t  rounded-full overflow-hidden w-full">
-                <div className="flex items-center pl-4 pr-2 text-gray-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+              <div className="flex items-center bg-white shadow-md border border-[#192951] rounded-full overflow-hidden w-full">
+                <div className="flex items-center pl-4 pr-2 text-[#192951]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#192951]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 7.5v9a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 16.5v-9A2.25 2.25 0 014.5 5.25h15a2.25 2.25 0 012.25 2.25z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5l8.22 5.48a1.5 1.5 0 001.56 0L21 7.5" />
                   </svg>
@@ -67,7 +67,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email Address"
-                  className="flex-1 min-w-0 px-4 py-3 sm:py-4 text-gray-900 placeholder-gray-500 focus:outline-none"
+                  className="flex-1 min-w-0 px-4 py-3 sm:py-4 text-[#192951] placeholder-[#192951] focus:outline-none"
                   style={{ fontFamily: 'Jost, sans-serif' }}
                   required
                 />
