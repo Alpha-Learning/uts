@@ -49,7 +49,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
           {!isSubmitted ? (
             <motion.form
               onSubmit={handleSubmit}
-              className="mx-auto  max-w-3xl"
+              className="mx-auto  max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -73,7 +73,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                 />
                 <button
                   type="submit"
-                  className="px-5 flex justify-center sm:px-7  py-5  bg-[#192951] text-white font-semibold text-sm sm:text-lg  whitespace-nowrap min-w-[110px]"
+                  className="px-5 flex justify-center sm:px-7  py-4 sm:rounded-full  bg-[#192951] text-white font-semibold text-sm sm:text-lg  whitespace-nowrap sm:min-w-[200px]"
                   style={{ fontFamily: 'LeBeauneNe' }}
                 >
                   Submit
