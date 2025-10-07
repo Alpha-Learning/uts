@@ -17,17 +17,19 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-2 sm:space-y-3 ">
                 <motion.div
+                className=""
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <span className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                  
+                  <h2 className="mt-2 mb-14 flex flex-col  leading-tight" style={{ fontFamily: 'LeBeauneNew', fontSize: '42px', fontWeight: 400, color: '#222222' }}>
+                 <span className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                     ALS
                   </span>
-                  <h2 className="mt-2 mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'LeBeauneNew', fontSize: '42px', fontWeight: 400, color: '#222222' }}>
                    STORY
                   </h2>
                 </motion.div>
