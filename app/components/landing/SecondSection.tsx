@@ -21,10 +21,11 @@ export default function SecondSection({ scrollY }: { scrollY: number }) {
             >
               <div>
               
-                 <h2 className="text-4xl lg:text-4xl text-center font-medium text-[#222222] mt-4 mb-6 uppercase leading-tight" style={{ fontFamily: 'LeBeauneNew, serif' }}>
+                 <h2 style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}
+                  className="text-4xl lg:text-4xl text-center font-medium text-[#222222] mt-4 mb-6 uppercase leading-tight">
                    MISSION
                  </h2>
-                 <p className="text-lg text-black leading-relaxed text-justify lg:text-left mb-8" style={{ fontFamily: 'Jost, sans-serif' }}>
+                 <p style={{ fontFamily: 'Jost, sans-serif' }} className="text-lg text-[#373737] leading-relaxed text-justify lg:text-left mb-8" >
                   The Kingster curriculum is designed to foster a love of learning, critical thinking, and creativity. We believe in a holistic approach to education, nurturing not just academic excellence but also social, emotional, and physical development. Our dedicated educators create an engaging and supportive environment where every child can thrive and reach their full potential.
                 </p>
                

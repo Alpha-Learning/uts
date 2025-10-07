@@ -36,11 +36,27 @@ export default function Header() {
       }
       
       setLastScrollY(currentScrollY);
+
+      // Determine active section based on scroll position
+      const sectionIds = ['top', 'services', 'waiting-list', 'contact'];
+      let currentActiveId = 'top';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        // Consider a section active once its top passes 30% of the viewport height
+        if (rect.top <= window.innerHeight * 0.3) {
+          currentActiveId = id;
+        }
+      }
+      if (currentActiveId !== activeId) {
+        setActiveId(currentActiveId);
+      }
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, activeId]);
 
   useEffect(() => {
     const onResize = () => {
@@ -66,13 +82,13 @@ export default function Header() {
             }`}>
               <li>
                 <a className={`font-semibold transition-colors duration-300 ${
-                  activeId === 'top' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-teal-200')
-                }`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a>
+                  activeId === 'top' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                } nav-link`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a>
               </li>
               <li>
                 <a className={`transition-colors duration-300 ${
-                  activeId === 'services' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-white')
-                }`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a>
+                  activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                } nav-link`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a>
               </li>
              
             </ul>
@@ -90,13 +106,13 @@ export default function Header() {
               <ul className="flex items-center gap-10">
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    activeId === 'waiting-list' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-white')
-                  }`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a>
+                    activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                  } nav-link`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a>
                 </li>
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    activeId === 'contact' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-white')
-                  }`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
+                    activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                  } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
                 </li>
                
               </ul>
@@ -127,16 +143,16 @@ export default function Header() {
         {mobileOpen && (
           <div className="px-4 pb-4">
             <ul className="grid grid-cols-1 gap-3">
-              <li><a className={`${activeId === 'top' ? 'text-teal-600 font-semibold' : 'font-semibold'}`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a></li>
+              <li><a className={`${activeId === 'top' ? 'text-[#192951] font-semibold' : 'font-semibold'} nav-link`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                activeId === 'services' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
-              }`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a></li>
+                activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+              } nav-link`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                activeId === 'waiting-list' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
-              }`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a></li>
+                activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+              } nav-link`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                activeId === 'contact' ? 'text-teal-600' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
-              }`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a></li>
+                activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+              } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a></li>
              
             </ul>
           </div>

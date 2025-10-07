@@ -27,13 +27,13 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
                   <span className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                     ALS
                   </span>
-                  <h2 className="text-3xl sm:text-4xl  font-medium text-[#222222] mt-2 mb-4 sm:mb-6 uppercase leading-tight" style={{ fontFamily: 'LeBeauneNew, serif' }}>
+                  <h2 className="mt-2 mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}>
                     Story
                   </h2>
                 </motion.div>
                 
                 <motion.p 
-                  className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed text-justify sm:text-left max-w-2xl"
+                  className="text-[18px] jost font-normal tracking-normal normal-case text-[#373737] leading-[1.7] text-justify sm:text-left max-w-2xl"
                   style={{ fontFamily: 'Jost, sans-serif' }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
