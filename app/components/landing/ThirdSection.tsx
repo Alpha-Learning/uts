@@ -56,7 +56,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="flex items-stretch rounded-full bg-white overflow-hidden shadow-xl">
+              <div className="flex flex-col sm:flex-row items-stretch bg-white shadow-xl rounded-2xl sm:rounded-full sm:overflow-hidden gap-3 sm:gap-0 p-2 sm:p-0">
                 <div className="hidden sm:flex items-center pl-5 pr-3 rotate-320 text-gray-400">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                     <path d="M1.5 4.5l21 7.5-21 7.5 6-7.5-6-7.5zm6 7.5l15 0-15 0zm0 0l-3 6 3-6z" />
@@ -67,13 +67,13 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email Address"
-                  className="flex-1 px-5 py-4 text-gray-900 placeholder-gray-500 focus:outline-none"
+                  className="flex-1 px-5 py-4 text-gray-900 placeholder-gray-500 focus:outline-none rounded-full sm:rounded-none"
                   style={{ fontFamily: 'Jost, sans-serif' }}
                   required
                 />
                 <button
                   type="submit"
-                  className="px-6 sm:px-8 bg-[#192951] text-white font-semibold whitespace-nowrap"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#192951] text-white font-semibold rounded-full sm:rounded-none whitespace-nowrap"
                   style={{ fontFamily: 'LeBeauneNew, serif' }}
                 >
                   Subscribe
