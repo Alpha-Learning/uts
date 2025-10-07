@@ -22,7 +22,7 @@ export default function SecondSection({ scrollY }: { scrollY: number }) {
               <div>
               
                  <h2 style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}
-                  className="text-4xl lg:text-4xl mb-14 text-center font-medium text-[#222222] mt-4  uppercase leading-tight">
+                  className="text-4xl lg:text-4xl mb-8 lg:mb-10 xl:mb-14 text-center font-medium text-[#222222] mt-4  uppercase leading-tight">
                    MISSION
                  </h2>
                  <p style={{ fontFamily: 'Jost, sans-serif' }} className="text-[18px] text-center text-[#373737] leading-[1.9] max-w-3xl mx-auto mb-8" >

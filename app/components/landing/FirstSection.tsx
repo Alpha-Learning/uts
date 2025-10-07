@@ -26,7 +26,7 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   
-                  <h2 className="mt-2 mb-14 flex flex-col  leading-tight" style={{ fontFamily: 'LeBeauneNew', fontSize: '42px', fontWeight: 400, color: '#222222' }}>
+                  <h2 className=" mb-8 lg:mb-10 xl:mb-14 flex flex-col  leading-tight" style={{ fontFamily: 'LeBeauneNew', fontSize: '42px', fontWeight: 400, color: '#222222' }}>
                  <span className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                     ALS
                   </span>
@@ -58,7 +58,7 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
               <div className="relative w-full h-full">
                 {/* Top-Right Image - Largest */}
                 <motion.div
-                  className="absolute top-0 right-0 w-[65%] sm:w-[60%] h-[45%] sm:h-[50%] p-1 sm:p-2 bg-white shadow-lg sm:shadow-xl drop-shadow-lg sm:drop-shadow-2xl overflow-hidden "
+                  className="absolute top-0 right-0 md:right-18 w-[65%] sm:w-[58%] md:w-[48%]  lg:w-[50%] xl:w-[60%] aspect-square p-1 sm:p-2 bg-white shadow-lg sm:shadow-xl drop-shadow-lg sm:drop-shadow-2xl overflow-hidden"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -73,7 +73,7 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
 
                 {/* Bottom-Left Image - Medium */}
                 <motion.div
-                  className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-0 w-[65%] sm:w-[60%] h-[45%] sm:h-[50%] p-1 sm:p-2 bg-white shadow-lg sm:shadow-xl drop-shadow-lg sm:drop-shadow-2xl overflow-hidden "
+                  className="absolute bottom-8 md:left-18 top-44 sm:bottom-12 md:bottom-16 lg:left-18 xl:left-0 lg:bottom-44 xl:bottom-20 left-0 w-[65%] sm:w-[58%] md:w-[48%] lg:w-[50%] xl:w-[60%] aspect-square p-1 sm:p-2 bg-white shadow-lg sm:shadow-xl drop-shadow-lg sm:drop-shadow-2xl overflow-hidden"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}

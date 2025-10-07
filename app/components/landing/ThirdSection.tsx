@@ -26,7 +26,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
       <div className="relative z-10  pb-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2
-            className="text-3xl text-[#192951] sm:text-4xl md:text-5xl font-bold mb-14 tracking-wide"
+            className="text-3xl text-[#192951] sm:text-4xl md:text-5xl font-bold mb-8 lg:mb-10 xl:mb-14 tracking-wide"
             style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
