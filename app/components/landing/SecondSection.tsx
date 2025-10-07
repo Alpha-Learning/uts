@@ -25,9 +25,8 @@ export default function SecondSection({ scrollY }: { scrollY: number }) {
                   className="text-4xl lg:text-4xl mb-14 text-center font-medium text-[#222222] mt-4  uppercase leading-tight">
                    MISSION
                  </h2>
-                 <p style={{ fontFamily: 'Jost, sans-serif' }} className="text-lg text-[#373737] leading-relaxed text-justify lg:text-left mb-8" >
-                  The Kingster curriculum is designed to foster a love of learning, critical thinking, and creativity. We believe in a holistic approach to education, nurturing not just academic excellence but also social, emotional, and physical development. Our dedicated educators create an engaging and supportive environment where every child can thrive and reach their full potential.
-                </p>
+                 <p style={{ fontFamily: 'Jost, sans-serif' }} className="text-[18px] text-center text-[#373737] leading-[1.9] max-w-3xl mx-auto mb-8" >
+                 To become the world’s most pioneering education hub where the full spectrum of human potential is awakened, nurtured and elevated. At Alphera Academy, we do not teach to the test. We cultivate future-ready humans. Our mission goes beyond education. We strive to become the architects of human potential, creating the appropriate conditions for the next generations to thrive.                </p>
                
               </div>
             </motion.div>

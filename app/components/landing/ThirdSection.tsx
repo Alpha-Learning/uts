@@ -37,7 +37,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
           </motion.h2>
 
           <motion.p
-     style={{ fontFamily: 'Jost, sans-serif' }} className=" text-[18px] my-9 text-[#373737] leading-relaxed text-justify lg:text-left mb-8"
+     style={{ fontFamily: 'Jost, sans-serif' }} className="text-[18px] text-center text-[#373737] leading-[1.9] max-w-3xl mx-auto my-9 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -73,7 +73,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                 />
                 <button
                   type="submit"
-                  className="px-5 flex justify-center sm:px-7  sm:py-5  bg-[#192951] text-white font-semibold text-sm sm:text-lg  whitespace-nowrap min-w-[110px]"
+                  className="px-5 flex justify-center sm:px-7  py-5  bg-[#192951] text-white font-semibold text-sm sm:text-lg  whitespace-nowrap min-w-[110px]"
                   style={{ fontFamily: 'LeBeauneNe' }}
                 >
                   Submit
