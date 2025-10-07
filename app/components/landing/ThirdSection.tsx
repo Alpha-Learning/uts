@@ -37,7 +37,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
           </motion.h2>
 
           <motion.p
-     style={{ fontFamily: 'Jost, sans-serif' }} className=" text-[18px] my-5 text-[#373737] leading-relaxed text-justify lg:text-left mb-8"
+     style={{ fontFamily: 'Jost, sans-serif' }} className=" text-[18px] my-9 text-[#373737] leading-relaxed text-justify lg:text-left mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}

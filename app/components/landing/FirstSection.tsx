@@ -27,7 +27,7 @@ export default function FirstSection({ scrollY }: { scrollY: number }) {
                   <span className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                     ALS
                   </span>
-                  <h2 className="mt-2 mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 300, color: '#222222' }}>
+                  <h2 className="mt-2 mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'LeBeauneNew', fontSize: '42px', fontWeight: 400, color: '#222222' }}>
                    STORY
                   </h2>
                 </motion.div>

@@ -33,6 +33,8 @@ export default function RootLayout({
         type="text/css"
         media="all"
     />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400%2C700%7CRoboto:400" rel="stylesheet" property="stylesheet" media="all" type="text/css" />
+        <link href="https://db.onlinewebfonts.com/c/9f4965a37ac189de7844a4c13c7108f5?family=LeBeauneNew" rel="stylesheet"/>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
