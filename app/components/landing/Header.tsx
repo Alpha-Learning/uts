@@ -82,12 +82,12 @@ export default function Header() {
             }`}>
               <li>
                 <a className={`font-semibold transition-colors duration-300 ${
-                  activeId === 'top' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                  activeId === 'top' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
                 } nav-link`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a>
               </li>
               <li>
                 <a className={`transition-colors duration-300 ${
-                  activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                  activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
                 } nav-link`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a>
               </li>
              
@@ -106,12 +106,12 @@ export default function Header() {
               <ul className="flex items-center gap-10">
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                    activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
                   } nav-link`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a>
                 </li>
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800 hover:text-[#192951]' : 'text-white hover:text-white')
+                    activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
                   } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
                 </li>
                

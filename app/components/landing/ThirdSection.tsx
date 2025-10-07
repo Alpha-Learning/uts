@@ -27,8 +27,7 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2
             className="text-3xl text-[#192951] sm:text-4xl md:text-5xl font-bold  tracking-wide"
-            style={{ fontFamily: 'LeBeauneNew, serif' }}
-            initial={{ opacity: 0, y: 20 }}
+            style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
@@ -56,10 +55,11 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="flex flex-col sm:flex-row items-stretch bg-white shadow-xl rounded-2xl sm:rounded-full sm:overflow-hidden gap-3 sm:gap-0 p-2 sm:p-0">
-                <div className="hidden sm:flex items-center pl-5 pr-3 rotate-320 text-gray-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                    <path d="M1.5 4.5l21 7.5-21 7.5 6-7.5-6-7.5zm6 7.5l15 0-15 0zm0 0l-3 6 3-6z" />
+              <div className="flex items-center bg-white shadow-md border-t rounded-full overflow-hidden w-full">
+                <div className="flex items-center pl-4 pr-2 text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 7.5v9a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 16.5v-9A2.25 2.25 0 014.5 5.25h15a2.25 2.25 0 012.25 2.25z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5l8.22 5.48a1.5 1.5 0 001.56 0L21 7.5" />
                   </svg>
                 </div>
                 <input
@@ -67,16 +67,16 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email Address"
-                  className="flex-1 px-5 py-4 text-gray-900 placeholder-gray-500 focus:outline-none rounded-full sm:rounded-none"
+                  className="flex-1 min-w-0 px-4 py-3 sm:py-4 text-gray-900 placeholder-gray-500 focus:outline-none"
                   style={{ fontFamily: 'Jost, sans-serif' }}
                   required
                 />
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#192951] text-white font-semibold rounded-full sm:rounded-none whitespace-nowrap"
+                  className="px-5 sm:px-7 py-3 sm:py-4 rounded-full bg-[#192951] text-white font-semibold text-sm sm:text-base whitespace-nowrap min-w-[110px]"
                   style={{ fontFamily: 'LeBeauneNew, serif' }}
                 >
-                  Subscribe
+                  Submit
                 </button>
               </div>
             </motion.form>
