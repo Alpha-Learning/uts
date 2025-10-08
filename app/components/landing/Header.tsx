@@ -78,16 +78,16 @@ export default function Header() {
           <div className="flex justify-center gap-x-18 items-center">
             {/* Left links */}
             <ul className={`flex items-center gap-10 justify-center transition-colors duration-300 ${
-              scrollY > 100 ? 'text-gray-800' : 'text-white'
+              scrollY > 100 ? 'text-gray-800' : 'text-[#192951]'
             }`}>
               <li>
                 <a className={`font-semibold transition-colors duration-300 ${
-                  activeId === 'top' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
+                  activeId === 'top' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-[#192951] hover:text-[#192951]')
                 } nav-link`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a>
               </li>
               <li>
                 <a className={`transition-colors duration-300 ${
-                  activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
+                  activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-[#192951] hover:text-[#192951]')
                 } nav-link`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a>
               </li>
              
@@ -101,17 +101,17 @@ export default function Header() {
 
             {/* Right links + search */}
             <div className={`flex items-center gap-8 justify-start transition-colors duration-300 ${
-              scrollY > 100 ? 'text-gray-800' : 'text-white'
+              scrollY > 100 ? 'text-gray-800' : 'text-[#192951]'
             }`}>
               <ul className="flex items-center gap-10">
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
+                    activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-[#192951] hover:text-[#192951]')
                   } nav-link`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a>
                 </li>
                 <li>
                   <a className={`transition-colors duration-300 ${
-                    activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-white hover:text-white')
+                    activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-[#192951] font-semibold' : 'text-[#192951] hover:text-[#192951]')
                   } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
                 </li>
                
@@ -126,10 +126,10 @@ export default function Header() {
         <div className="h-16 px-4 flex items-center justify-between">
           <button
             aria-label="Toggle menu"
-            className={`transition-colors duration-300 ${scrollY > 100 ? 'text-gray-800/80' : 'text-white/80'}`}
+            className={`transition-colors duration-300 ${scrollY > 100 ? 'text-gray-800/80' : 'text-[#192951]/80'}`}
             onClick={() => setMobileOpen((v) => !v)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 transition-colors duration-300 ${scrollY > 100 ? 'text-gray-800' : 'text-white'}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 transition-colors duration-300 ${scrollY > 100 ? 'text-gray-800' : 'text-[#192951]'}`}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
@@ -145,13 +145,13 @@ export default function Header() {
             <ul className="grid grid-cols-1 gap-3">
               <li><a className={`${activeId === 'top' ? 'text-[#192951] font-semibold' : 'font-semibold'} nav-link`} href="#top" onClick={(e) => handleNavClick(e, 'top')}>Home</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+                activeId === 'services' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-[#192951]')
               } nav-link`} href="#services" onClick={(e) => handleNavClick(e, 'services')}>Mission</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+                activeId === 'waiting-list' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-[#192951]')
               } nav-link`} href="#waiting-list" onClick={(e) => handleNavClick(e, 'waiting-list')}>Waiting List</a></li>
               <li><a className={`font-medium transition-colors duration-300 ${
-                activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-white')
+                activeId === 'contact' ? 'text-[#192951]' : (scrollY > 100 ? 'text-gray-800' : 'text-[#192951]')
               } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a></li>
              
             </ul>
