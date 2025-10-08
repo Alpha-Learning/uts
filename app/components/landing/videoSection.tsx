@@ -6,7 +6,7 @@ export default function VideoSection() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute  w-full h-full">
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -14,13 +14,13 @@ export default function VideoSection() {
           loop
           playsInline
         >
-          <source src="/videos/final.mp4" type="video/mp4" />
+          <source src="/videos/final.mp4" type="video/mp4" className='w-1/2' />
           <source src="/videos/background-video.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
         
         {/* Video Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 "></div>
       </div>
 
       {/* Content Overlay */}
