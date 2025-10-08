@@ -14,7 +14,7 @@ export default function VideoSection() {
           loop
           playsInline
         >
-          <source src="/videos/bg.mp4" type="video/mp4" />
+          <source src="/videos/final.mp4" type="video/mp4" />
           <source src="/videos/background-video.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
