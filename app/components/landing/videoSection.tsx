@@ -1,29 +1,86 @@
 "use client";
 
-import React from 'react'
+import React from 'react';
+import  { useEffect, useState } from "react";
 
 export default function VideoSection() {
+   const [showBar, setShowBar] = useState(false);
+   const [showText,setShowText] =useState(false);
+   const [showImage, setShowImage] = useState(false);
+
+  useEffect(() => {
+    if(showImage){
+    const timer = setTimeout(() => setShowBar(true), 1000); 
+    const text=setTimeout(()=> setShowText(true),1500)
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(text);
+    }
+    }
+  }, [showImage]);
+
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* Background Video */}
-      <div className="absolute  w-full h-full">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/videos/final.mp4" type="video/mp4" className='w-1/2' />
-          <source src="/videos/background-video.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* Video Overlay for better text readability */}
-        <div className="absolute inset-0 "></div>
-      </div>
+      
+      <div className="absolute w-full h-full top-0 left-0">
+       <video
+    className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+      showImage ? "opacity-0" : "opacity-100"
+    }`}
+    autoPlay
+    muted
+    playsInline
+    onEnded={() => setShowImage(true)}
+  >
+    <source src="/videos/final.mp4" type="video/mp4" />
+    <source src="/videos/background-video.webm" type="video/webm" />
+    Your browser does not support the video tag.
+  </video>
 
-      {/* Content Overlay */}
+  
+  <img
+    src="/alphera.png"
+    alt="Background"
+    className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+      showImage ? "opacity-100" : "opacity-0"
+    }`}
+  />
+      </div>
+      <div
+        className={`absolute bottom-0 left-0 w-full bg-[#F6F6F699] backdrop-blur-md text-white flex items-center justify-center text-2xl font-semibold transition-all duration-700 ${
+  showBar ? "h-[40%]" : "h-0"
+}`}
+
+      >
+       <p
+  className={`transition-opacity duration-700 text-center px-6 max-w-3xl mx-auto ${
+    showText ? "opacity-100" : "opacity-0"
+  }`}
+>
+  <span
+  className="block mb-6 text-center align-middle font-normal text-[36px] leading-[100%] tracking-[0%] text-[#004AAD]"
+  style={{ fontFamily: "Jost, sans-serif" }}
+>
+  Welcome to Alphera Academy
+</span>
+
+<span
+  className="block mb-6 text-center align-middle font-normal text-[20px] leading-[100%] tracking-[0%] font-[regular] text-[#004AAD]"
+style={{ fontFamily: "Jost, sans-serif" }}
+>
+  A new kind of school where innovation meets purpose. We combine the <br/>
+  best of the British and Arabic curricula with AI-driven personalisation <br/>
+  preparing students not just for exams, but for life.
+</span>
+<span
+ className="font-[Foco,sans-serif] font-black text-[25px] leading-[100%] tracking-[0%] text-center align-middle text-[#004AAD]"
+>
+  Join the Waiting List
+</span>
+</p>
+
+ </div>
+       {/* Content Overlay */}
       {/* <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center text-white px-6 max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">

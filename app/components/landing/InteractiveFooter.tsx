@@ -52,7 +52,7 @@ export default function InteractiveFooter() {
 
   return (
     <footer id="contact" className="bg-[#142954] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-[#004AAD]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Left Section - Logo and Address */}
           <div className="space-y-6 ">
@@ -102,18 +102,60 @@ export default function InteractiveFooter() {
           </div>
 
           {/* ABOUT US */}
-          <div className="space-y-4">
-            <h3 className="text-white font-bold text-sm uppercase tracking-wider" style={{ fontFamily: 'LeBeauneNew, serif' }}>ABOUT US</h3>
-            <ul className="space-y-2">
-              {academicsLinks.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-300 text-sm hover:text-white transition-colors duration-300" style={{ fontFamily: 'Jost, sans-serif' }}>
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+         <ul className="space-y-2">
+  <li>
+    <a
+      href="/"
+      className="text-gray-300 text-sm hover:text-white transition-colors duration-300"
+      style={{ fontFamily: "Jost, sans-serif" }}
+    >
+      Home
+    </a>
+  </li>
+
+  <li>
+    <a
+      href="/aboutus"
+      className="text-gray-300 text-sm hover:text-white transition-colors duration-300"
+      style={{ fontFamily: "Jost, sans-serif" }}
+    >
+      About Us
+    </a>
+  </li>
+
+  <li>
+    <a
+      href="/ourprogram"
+      className="text-gray-300 text-sm hover:text-white transition-colors duration-300"
+      style={{ fontFamily: "Jost, sans-serif" }}
+    >
+      Our Programme
+    </a>
+  </li>
+
+  <li>
+    <a
+      href="/waitlist"
+      className="text-gray-300 text-sm hover:text-white transition-colors duration-300"
+      style={{ fontFamily: "Jost, sans-serif" }}
+    >
+      Waiting List
+    </a>
+  </li>
+
+  <li>
+    <a
+       href="#"
+  onClick={(e) => e.preventDefault()}
+      className="text-gray-300 text-sm hover:text-white transition-colors duration-300"
+      style={{ fontFamily: "Jost, sans-serif" }}
+    >
+      Contact Us
+    </a>
+  </li>
+</ul>
+
+          
         </div>
 
         {/* Bottom Bar - Copyright and Social Media */}

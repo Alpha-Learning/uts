@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function ThirdSection({ scrollY }: { scrollY: number }) {
+export default function ThirdSection() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -17,7 +17,12 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
   };
 
   return (
-    <section id="waiting-list" className="relative bg-white overflow-hidden">
+    // <section id="waiting-list" className="relative bg-white overflow-hidden">
+  <section
+  id="waiting-list"
+className="relative overflow-visible bg-gradient-to-br from-[#004AAD] via-[#5A9FC8] to-[#A1D0E8] shadow-[0_10px_15px_-5px_rgba(0,0,0,0.5)]"
+>
+
       <div className="absolute inset-0">
         {/* <img src="/bg.jpg" alt="newsletter background" className="w-full h-full object-cover" /> */}
         <div className="absolute inset-0 " />
@@ -26,18 +31,18 @@ export default function ThirdSection({ scrollY }: { scrollY: number }) {
       <div className="relative z-10  pb-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2
-            className="text-3xl text-[#192951] sm:text-4xl md:text-5xl font-bold mb-8 lg:mb-10 xl:mb-14 tracking-wide"
-            style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}            initial={{ opacity: 0, y: 20 }}
+            className="text-3xl text-[#004AAD] sm:text-4xl md:text-5xl font-bold mb-8 lg:mb-10 xl:mb-14 tracking-wide"
+            style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '47px', fontWeight: 900, color: '#004AAD' }}            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            WAITING LIST
+            Join the Waiting List
 
           </motion.h2>
 
           <motion.p
-     style={{ fontFamily: 'Jost, sans-serif' }} className="text-[18px] text-center text-[#373737] leading-[1.9] max-w-3xl mx-auto my-9 mb-8"
+     style={{ fontFamily: 'Jost, sans-serif' }} className="text-[24px] text-center text-[#004AAD] leading-[1.9] max-w-3xl mx-auto my-9 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -55,7 +60,7 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="flex items-center bg-white shadow-md border border-[#192951] rounded-full overflow-hidden w-full">
+              <div className="flex items-center bg-white shadow-md border border-[#192951] rounded-full border border-gray-300 focus:ring-2 focus:ring-[#004AAD] overflow-hidden w-full">
                 <div className="flex items-center pl-4 pr-2 text-[#192951]">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#192951]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 7.5v9a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 16.5v-9A2.25 2.25 0 014.5 5.25h15a2.25 2.25 0 012.25 2.25z" />
@@ -66,17 +71,17 @@ At Alphera Academy, our waiting list is not just a line, it is a pathway into ou
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your Email Address"
-                  className="flex-1 min-w-0 px-4 py-3 sm:py-4 text-[#192951] placeholder-[#192951] focus:outline-none"
+                  placeholder="Email Here"
+                  className="flex-1 min-w-0 px-4 py-3 sm:py-4 text-[#192951] placeholder-[#9EC7FD] focus:outline-none"
                   style={{ fontFamily: 'Jost, sans-serif' }}
                   required
                 />
                 <button
                   type="submit"
-                  className="px-5 flex justify-center sm:px-7  py-4 sm:rounded-full  bg-[#192951] text-white font-semibold text-sm sm:text-lg  whitespace-nowrap sm:min-w-[200px]"
-                  style={{ fontFamily: 'LeBeauneNe' }}
-                >
-                  Submit
+                  className="px-5 flex justify-center sm:px-7 py-4 sm:rounded-full font-semibold text-sm sm:text-lg whitespace-nowrap sm:min-w-[200px]"
+style={{ fontFamily: 'LeBeauneNe', backgroundColor: '#004AAD', color: '#9EC7FD' }}
+>
+                  SUBMIT
                 </button>
               </div>
             </motion.form>

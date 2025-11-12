@@ -74,10 +74,10 @@ export default function Home() {
  <div id="top">
   <Header />
   <VideoSection />
-  <FirstSection scrollY={scrollY} />
-  <img src="/f.png" alt="" className="w-full h-[320px] md:h-[660px] object-cover" />
-  <SecondSection scrollY={scrollY} />
-  <ThirdSection scrollY={scrollY} />
+  {/* <FirstSection scrollY={scrollY} /> */}
+  {/* <img src="/f.png" alt="" className="w-full h-[320px] md:h-[660px] object-cover" /> */}
+  {/* <SecondSection scrollY={scrollY} /> */}
+  <ThirdSection  />
   {/* <LocationMap /> */}
   <InteractiveFooter />
  </div>
