@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function FirstSection({ scrollY }: { scrollY: number }) {
+export default function FirstSection() {
   return (
     <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
       <div className="w-full">
