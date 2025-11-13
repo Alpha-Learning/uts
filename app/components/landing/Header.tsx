@@ -80,15 +80,15 @@ export default function Header() {
       <div className="hidden lg:flex items-center justify-center h-20 
                 bg-[#E9F2FEDB]/[0.86] backdrop-blur-md">
         <nav className="w-full max-w-7xl px-6">
-          <div className="flex justify-center gap-x-18 items-center">
+          <div className="flex justify-center items-center gap-x-20">
             {/* Left links */}
-            <ul className={`flex items-center gap-10 justify-center transition-colors duration-300 ${
+            <ul className={`flex items-center gap-20 justify-center transition-colors duration-300 ${
               scrollY > 100 ? 'text-gray-800' : 'text-[#82B3B4]'
             }`}>
               <li>
                 <Link className={`font-semibold transition-colors duration-300 ${
                   activeId === 'top' ? 'text-[#82B3B4]' : (scrollY > 100 ? 'text-[#82B3B4] font-semibold' : 'text-[#82B3B4] hover:text-[#82B3B4]')
-                } nav-link`} href="/aboutus" onClick={() => setMobileOpen(false)} >About Us</Link>
+                } nav-link`} href="/aboutus" onClick={() => setMobileOpen(false)} >ABOUT US</Link>
               </li>
               <li>
                 <Link
@@ -107,7 +107,7 @@ export default function Header() {
 
             {/* Center logo */}
             <div className="flex items-center justify-center">
-              <img src="/logo.png" alt="logo" className="w-18 h-12" />
+              <img src="/Group.png" alt="logo" className="w-18 h-15" />
              
             </div>
 
@@ -115,16 +115,16 @@ export default function Header() {
             <div className={`flex items-center gap-8 justify-start transition-colors duration-300 ${
               scrollY > 100 ? 'text-gray-800' : 'text-[#82B3B4]'
             }`}>
-              <ul className="flex items-center gap-10">
+              <ul className="flex items-center gap-12">
                 <li>
                   <Link className={`transition-colors duration-300 ${
                     activeId === 'waiting-list' ? 'text-[#82B3B4]' : (scrollY > 100 ? 'text-[#82B3B4] font-semibold' : 'text-[#82B3B4] hover:text-[#82B3B4]')
-                  } nav-link`} href="/waitlist" onClick={() => setMobileOpen(false)}>Waiting List</Link>
+                  } nav-link`} href="/waitlist" onClick={() => setMobileOpen(false)}>WAITING LIST</Link>
                 </li>
                 <li>
                   <a className={`transition-colors duration-300 ${
                     activeId === 'contact' ? 'text-[#82B3B4]' : (scrollY > 100 ? 'text-[#82B3B4] font-semibold' : 'text-[#82B3B4] hover:text-[#82B3B4]')
-                  } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
+                  } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>CONTACT US</a>
                 </li>
                
               </ul>
@@ -147,7 +147,7 @@ export default function Header() {
           </button>
 
 
-          <img src="/logo.png" alt="logo" className="w-16 h-12  mr-5"  />
+          <img src="/Group.png" alt="logo" className="w-16 h-15  mr-5"  />
          <div>
 
          </div>
@@ -155,7 +155,7 @@ export default function Header() {
         {mobileOpen && (
           <div className="px-4 pb-4">
             <ul className="grid grid-cols-1 gap-3">
-              <li><Link href="/aboutus" className={`${activeId === 'top' ? 'text-[#82B3B4] font-semibold' : 'font-semibold'} nav-link`} onClick={() => setMobileOpen(false)} >About Us</Link></li>
+              <li><Link href="/aboutus" className={`${activeId === 'top' ? 'text-[#82B3B4] font-semibold' : 'font-semibold'} nav-link`} onClick={() => setMobileOpen(false)} >ABOUT US</Link></li>
               <li><Link
   href="/ourprogram"
   className={`font-medium transition-colors duration-300 ${
@@ -168,10 +168,10 @@ export default function Header() {
 </li>
               <li><Link className={`font-medium transition-colors duration-300 ${
                 activeId === 'waiting-list' ? 'text-[#82B3B4]' : (scrollY > 100 ? 'text-gray-800' : 'text-[#82B3B4]')
-              } nav-link`} href="#waiting-list" onClick={() => setMobileOpen(false)}>Waiting List</Link></li>
+              } nav-link`} href="#waiting-list" onClick={() => setMobileOpen(false)}>WAITING LIST</Link></li>
               <li><a className={`font-medium transition-colors duration-300 ${
                 activeId === 'contact' ? 'text-[#82B3B4]' : (scrollY > 100 ? 'text-gray-800' : 'text-[#82B3B4]')
-              } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a></li>
+              } nav-link`} href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>CONTACT US</a></li>
              
             </ul>
           </div>
