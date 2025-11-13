@@ -47,7 +47,7 @@ export default function VideoSection() {
   />
       </div>
       <div
-        className={`absolute bottom-0 left-0 w-full bg-[#F6F6F699] backdrop-blur-md text-white flex items-center justify-center text-2xl font-semibold transition-all duration-700 ${
+       className={`absolute bottom-0 left-0 w-full bg-white/80 backdrop-blur-[0px] text-white flex items-center justify-center text-2xl font-semibold transition-all duration-700 ${
   showBar ? "h-[40%]" : "h-0"
 }`}
 
