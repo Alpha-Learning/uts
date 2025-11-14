@@ -6,54 +6,54 @@ import { motion } from "framer-motion";
 export default function FirstSection() {
   const pillars = [
     {
-      title: "Meta Learning",
+      title: "Self Regulated Learning",
       desc: "Learning how to learn",
       img: "/a.jpeg",
     },
     {
-      title: "Innovation & Technology",
+      title: "Emotional Intelligence",
       desc: "AI-powered personalisationand smart learning systems",
       img: "/b.png",
     },
     {
-      title: "Global Citizenship",
+      title: "Social Skills",
       desc: "Leadership, empathy, and cultural awareness",
       img: "/c.png",
     },
     {
-      title: "Real-World Skills",
+      title: "General Cognitive",
       desc: "Connecting education to everyday life",
       img: "/d.jpeg",
     },
     {
-      title: "Wellbeing & Purpose",
+      title: "Creativity",
       desc: "Building balance, curiosity, and confidence",
       img: "/e.jpeg",
     },
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-0 bg-white">
       <div className="w-full">
         {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
         <div>
-          {/* ================= TOP IMAGE ================= */}
-          <motion.div
+          {/*  TOP IMAGE */}
+          <div
             className="relative w-full h-[390px] sm:h-[420px] md:h-[450px] lg:h-[480px] overflow-hidden mb-16  shadow-md"
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
+            // initial={{ opacity: 0, y: -30 }}
+            // whileInView={{ opacity: 1, y: 0 }}
+            // viewport={{ once: true, amount: 0.2 }}
+            // transition={{ duration: 0.6 }}
           >
             <img
-              src="/e.jpeg"
+              src="/au1.jpg"
               alt="Alphera Academy Banner"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#00000025] to-transparent"></div>
-          </motion.div>
+          </div>
 
-          {/* ================= OUR STORY ================= */}
+          {/*  OUR STORY */}
           <motion.div
             className="space-y-6 sm:space-y-8 text-center"
             initial={{ opacity: 0, y: 24 }}
@@ -64,10 +64,13 @@ export default function FirstSection() {
             <h2
               className="mb-8 flex flex-col leading-tight items-center"
               style={{
-                fontFamily: "Foco, regular",
+                fontFamily: "Foco",
                 fontSize: "47px",
                 fontWeight: 400,
                 color: "#004AAD",
+                textAlign: "center",
+                fontStyle: "normal",
+                lineHeight: "normal"
               }}
             >
               Our Story
@@ -75,7 +78,14 @@ export default function FirstSection() {
 
             <motion.p
               className="text-[18px] sm:text-[24px] font-normal text-[#004AAD] leading-relaxed tracking-[0.015em] text-center max-w-3xl mx-auto px-4 mb-20"
-              style={{ fontFamily: "Foco, regular" }}
+              style={{ fontFamily: "Foco",
+                fontSize: "24px",
+                fontWeight: 400,
+                color: "#004AAD",
+                textAlign: "center",
+                fontStyle: "normal",
+                lineHeight: "normal"
+               }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -88,7 +98,7 @@ export default function FirstSection() {
             </motion.p>
           </motion.div>
 
-          {/* ================= IMAGE BELOW STORY ================= */}
+          {/* IMAGE BELOW STORY  */}
           <motion.div
             className="relative w-full h-[287px] sm:h-[320px] md:h-[350px] lg:h-[380px] mt-12 overflow-hidden  shadow-md"
             initial={{ opacity: 0, y: 20 }}
@@ -97,7 +107,7 @@ export default function FirstSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img
-              src="/e.jpeg"
+              src="/au2.jpg"
               alt="Alphera Academy Banner"
               className="w-full h-full object-cover"
             />
@@ -105,29 +115,66 @@ export default function FirstSection() {
           </motion.div>
 
 
-          {/* ================== Mission & Vision Section ================== */}
+          {/*  Mission & Vision Section  */}
 <section className="w-screen bg-[#E6F3F5] py-16 sm:py-20 md:py-24 text-center flex flex-col items-center justify-center">
   <div className="max-w-6xl mx-auto px-6 sm:px-10">
     {/* Heading */}
     <h2
-      className="text-[#004AAD] text-[36px] sm:text-[47px] font-[400] mb-10 flex items-center justify-center gap-4"
-      style={{ fontFamily: "LeBeauneNew" }}
+      className="text-[#004AAD] text-[36px] sm:text-[47px] font-[400] flex items-center justify-center gap-4"
+      style={{   fontFamily: "Foco",
+                fontSize: "47px",
+                fontWeight: 400,
+                color: "#004AAD",
+                textAlign: "center",
+                fontStyle: "normal",
+                lineHeight: "normal" }}
     >
-      <span>Mission</span>
-      <span className="text-[50px] sm:text-[56px] font-light text-[#004AAD]">&</span>
-      <span>Vision</span>
+      <span style={{   fontFamily: "Foco",
+                fontSize: "47px",
+                fontWeight: 400,
+                color: "#004AAD",
+                textAlign: "center",
+                fontStyle: "normal",
+                lineHeight: "normal" }}>Mission</span>
+      <span className="text-[50px] sm:text-[56px] font-light text-[#004AAD]"
+      style={{color: "#004AAD",
+textAlign: "center",
+fontFamily: "Foco",
+fontSize: "96px",
+fontStyle: "normal",
+fontWeight: "300",
+lineHeight: "normal",}}
+      >&</span>
+      <span style={{   fontFamily: "Foco",
+                fontSize: "47px",
+                fontWeight: 400,
+                color: "#004AAD",
+                textAlign: "center",
+                fontStyle: "normal",
+                lineHeight: "normal" }}>Vision</span>
     </h2>
 
     {/* Divider & Two Columns */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8  text-[#004AAD]">
       {/* Mission */}
-      <div className="text-[16px] sm:text-[24px] leading-relaxed px-4 sm:px-6">
+      <div className="text-[16px] sm:text-[24px] leading-relaxed px-4 sm:px-6"
+      style={{fontFamily: "Foco",
+                fontWeight: 400,
+                color: "#004AAD",
+                textAlign: "right",
+                fontStyle: "normal",
+                lineHeight: "normal"}}>
         Empower every learner with the skills, confidence, and mindset to thrive
         in a changing world.
       </div>
 
       {/* Vision */}
-      <div className="text-[16px] sm:text-[24px] leading-relaxed px-4 sm:px-6 border-t md:border-t-0 md:border-l border-[#004AAD40] md:pl-10">
+      <div className="text-[16px] sm:text-[24px] leading-relaxed px-4 sm:px-6 border-t md:border-t-0 md:border-l md:pl-10"
+      style={{  fontWeight: 400,
+                color: "#004AAD",
+                textAlign: "left",
+                fontStyle: "normal",
+                lineHeight: "normal"}}>
         Create Bahrain’s first fully personalised, AI-enhanced learning
         environment where education adapts to each learner.
       </div>
@@ -136,12 +183,13 @@ export default function FirstSection() {
 </section>
 
 
-          {/* ================= WHY US ================= */}
+          {/*  WHY US */}
           <section className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] overflow-hidden">
             <img
-              src="/e.jpeg"
+              src="/au3.jpg"
               alt="Why Alphera"
               className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ transform: "scaleX(-1)" }}
             />
             <div className="absolute inset-0 bg-[#00000033]"></div>
 
@@ -155,7 +203,7 @@ export default function FirstSection() {
               <h2
                 className="mb-6"
                 style={{
-                  fontFamily: "Foco,regular",
+                  fontFamily: "Foco",
                   fontWeight: 400,
                   fontSize: "47px",
                   lineHeight: "100%",
@@ -168,30 +216,30 @@ export default function FirstSection() {
 
               <p
                 style={{
-                  fontFamily: "Foco,regular",
+                  fontFamily: "Foco",
                   fontWeight: 400,
-                  fontStyle: "reguar",
+                  fontStyle: "normal",
                   fontSize: "24px",
                   lineHeight: "100%",
                   letterSpacing: "0px",
                   color: "#004AAD",
                 }}
               >
-                At Alphera, we don’t just teach — we understand how every learner
-                learns best. We combine deep academic rigours with real-world
-                learning, personal development, and emotional intelligence. Our
-                learners grow into thinkers, leaders, and creators.
+                At Alphera, we don’t just teach, we understand how every learner learns best. We combine deep academic rigours with real-world learning, personal development, and emotional intelligence. Our learners grow into thinkers, leaders, and creators.
               </p>
             </motion.div>
           </section>
 
           
- {/* ================= 5 PILLARS OF ALPHERA ================= */}
-<section className="w-full py-12 sm:py-16 md:py-20 bg-white flex flex-col items-center text-center overflow-hidden">
+ {/*5 PILLARS OF ALPHERA */}
+<section className=" w-full py-12 sm:py-16 md:py-20 bg-[#E4D2C5] flex flex-col items-center text-center overflow-hidden">
   {/* Heading */}
   <h2
     className="text-[#004AAD] text-[30px] sm:text-[36px] md:text-[47px] font-[400] mb-10"
-    style={{ fontFamily: "foco,regular" }}
+    style={{ fontFamily: "Foco",
+                  lineHeight: "100%",
+                  letterSpacing: "0px",
+                 }}
   >
     The 5 Pillars of Alphera
   </h2>
@@ -200,34 +248,34 @@ export default function FirstSection() {
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 px-4 sm:px-8 md:px-12 lg:px-16 justify-items-center">
     {[
       {
-        title: "Meta Learning",
+        title: "Self Regulated Learning",
         desc: "Learning how to learn",
-        img: "/a.jpeg",
+        img: "/auicon1.png",
       },
       {
-        title: "Innovation & Technology",
+        title: "Emotional Intelligence",
         desc: "AI-powered personalisation and smart learning systems",
-        img: "/b.png",
+        img: "/auicon2.png",
       },
       {
-        title: "Global Citizenship",
+        title: "Social Skills",
         desc: "Leadership, empathy, and cultural awareness",
-        img: "/c.png",
+        img: "/auicon3.png",
       },
       {
-        title: "Real-World Skills",
+        title: "General Cognitive",
         desc: "Connecting education to everyday life",
-        img: "/d.jpeg",
+        img: "/auicon4.png",
       },
       {
-        title: "Wellbeing & Purpose",
+        title: "Creativity",
         desc: "Building balance, curiosity, and confidence",
-        img: "/e.jpeg",
+        img: "/auicon5.png",
       },
     ].map((pillar, index) => (
       <motion.div
   key={index}
-  className="bg-[#004AAD] rounded-[30px] shadow-md flex flex-col items-center justify-start p-5 sm:p-6"
+  className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] rounded-[30px] shadow-md flex flex-col items-center justify-start p-5 sm:p-6"
   style={{
     width: "198px",
     height: "284px",
@@ -237,14 +285,14 @@ export default function FirstSection() {
   viewport={{ once: false, amount: 0.2 }}
   transition={{ duration: 0.6, delay: index * 0.2 }}
 >
-  {/* === FIXED HEIGHT TOP AREA === */}
+
   <div className="flex flex-col items-center justify-start" style={{ height: "180px" }}>
     {/* Image */}
     <div
-      className="bg-white rounded-[12px] overflow-hidden flex items-center justify-center"
+      className="rounded-[12px] overflow-hidden flex items-center justify-center"
       style={{
-        width: "107px",
-        height: "107px",
+        // width: "100px",
+        // height: "99px",
         borderRadius:"0px",
         flexShrink: 0,
       }}
@@ -253,27 +301,27 @@ export default function FirstSection() {
         src={pillar.img}
         alt={pillar.title}
         style={{
-          width: "107px",
-          height: "107px",
+          // width: "100px",
+          // height: "99px",
           borderRadius: "0px",
           objectFit: "cover",
         }}
       />
     </div>
 
-    {/* Title (auto-adjust font size for long text) */}
+
     <h3
       className="text-white mt-3 text-center leading-[1.1]"
       style={{
-        fontFamily: "Foco, sans-serif",
+        fontFamily: "Foco",
         fontWeight: 400,
-        fontSize: "clamp(16px, 1.8vw, 18px)",
-        lineHeight: "1.2",
+        fontSize: "26px",
+        lineHeight: "1.normal",
         textAlign: "center",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "42px", // keeps equal spacing for all titles
+        minHeight: "42px", 
         padding: "0 4px",
         color:"white"
       }}
@@ -281,8 +329,8 @@ export default function FirstSection() {
       {pillar.title}
     </h3>
 
-    {/* Divider (perfectly aligned for all cards) */}
-    <div
+    
+    {/* <div
       className="w-[40px] bg-[#82B3B4] rounded-full"
       style={{
         height: "1px",
@@ -291,11 +339,11 @@ export default function FirstSection() {
         width:"164px",
         
       }}
-    ></div>
+    ></div> */}
   </div>
 
-  {/* === DESCRIPTION AREA === */}
-  <div className="flex-1 flex items-start justify-center">
+  {/* DESCRIPTION AREA */}
+  {/* <div className="flex-1 flex items-start justify-center">
     <p
       className="text-white opacity-90 text-center"
       style={{
@@ -310,7 +358,7 @@ export default function FirstSection() {
     >
       {pillar.desc}
     </p>
-  </div>
+  </div> */}
 </motion.div>
 
 

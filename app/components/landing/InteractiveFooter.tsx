@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const IconLinkedIn = ({ className = "" }: { className?: string }) => (
   <div
@@ -90,17 +91,22 @@ export default function Footer() {
     <footer className="bg-[#004AAD] text-white py-8">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between px-10 gap-8">
 
-        {/* 1️⃣ Logo */}
         <div className="flex flex-col items-center lg:items-start space-y-3">
-          <img src="/Groupalp.png" alt="Alphera" className="w-34 h-34 object-contain" />
-          {/* <p className="font-foco text-sm tracking-wide">ALPHERA</p>
-          <p className="text-sm text-white/80 font-jost">الفيرا</p> */}
+          
+          
+<Link href="/">
+  <img
+    src="/Groupalp.png"
+    alt="Alphera"
+    className="w-34 h-34 object-contain cursor-pointer"
+  />
+</Link>
         </div>
 
         {/* Divider */}
         <div className="hidden lg:block w-px h-20 bg-white/20" />
 
-        {/* 2️⃣ Menu Links */}
+        {/*  Menu Links */}
         <nav className="text-sm font-jost text-white/90 space-y-2 text-center lg:text-left">
           <a href="/" className="block hover:text-white">HOME</a>
           <a href="/aboutus" className="block hover:text-white">ABOUT US</a>
@@ -112,20 +118,23 @@ export default function Footer() {
         {/* Divider */}
         <div className="hidden lg:block w-px h-20 bg-white/20" />
 
-        {/* 3️⃣ CONNECT Section */}
+        {/*  CONNECT Section */}
         <div className="text-center lg:text-left">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white/90 mb-2">CONNECT</h3>
           <div className="text-sm font-jost text-white/80 leading-relaxed">
             <p>+973 88 88 88 88</p>
             <p>info@alphera.edu</p>
-            <p>www.alphera.edu</p>
+            <p>
+  <a href="https://www.alphera.edu">www.alphera.edu</a>
+</p>
+
           </div>
         </div>
 
         {/* Divider */}
         <div className="hidden lg:block w-px h-20 bg-white/20" />
 
-        {/* 4️⃣ Social Icons */}
+        {/* Social Icons */}
         <div className="flex items-center justify-center lg:justify-start space-x-6">
           <a href="#" className="text-white hover:text-white/70 transition-colors">
             <IconInstagram className="w-6 h-6" />
