@@ -1,112 +1,292 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { color, motion, Variants } from "framer-motion";
 
-export default function ThirdSection() {
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      // Here you would typically send the email to your backend
-      console.log("Email submitted:", email);
-    }
+export default function WaitingList() {
+  // Card animation variants
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.3,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
   };
 
+  // Arrow animation variants
+  const arrowVariants: Variants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: (i: number = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.3 + 0.25,
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    }),
+  };
+
+  // Process data
+  const processSteps = [
+    { id: 1, text: "Submit your interest form" },
+    { id: 2, text: "Attend an orientation session." },
+    { id: 3, text: "Complete the UTL process." },
+    { id: 4, text: "Receive your personalised admission pathway." },
+  ];
+
+  // Define colors for each card (matching the gradient)
+  const cardColors = ["#6EA1E4", "#5187CF", "#266DCD", "#004AAD"];
+
   return (
-    // <section id="waiting-list" className="relative bg-white overflow-hidden">
-  <section
-  id="waiting-list"
-className="relative overflow-visible bg-gradient-to-r from-[#004AAD] via-[#3B7BA1] to-[#82B3B4] shadow-[0_10px_15px_-5px_rgba(0,0,0,0.5)]"
->
-
-      <div className="absolute inset-0">
-        {/* <img src="/bg.jpg" alt="newsletter background" className="w-full h-full object-cover" /> */}
-        <div className="absolute inset-0 " />
-      </div>
-
-      <div className="relative z-10  pb-28">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            className="text-3xl text-[#192951] sm:text-4xl md:text-5xl font-bold mb-8 lg:mb-10 xl:mb-14 tracking-wide"
-            style={{ fontFamily: 'LeBeauneNew, serif', fontSize: '42px', fontWeight: 400, color: '#222222' }}            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-          >
-            WAITING LIST
-
-          </motion.h2>
-
-          <motion.p
-     style={{ fontFamily: 'Jost, sans-serif' }} className="text-[18px] text-center text-[#373737] leading-[1.9] max-w-3xl mx-auto my-9 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-At Alphera Academy, our waiting list is not just a line, it is a pathway into our learning community. Families who join it are showing their commitment into securing a place in a forward thinking environment where every seat is an opportunity to grow, learn, innovate and thrive.
-</motion.p>
-
-          {!isSubmitted ? (
-            <motion.form
-              onSubmit={handleSubmit}
-              className="mx-auto  max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="flex items-center bg-white shadow-md border border-[#192951] rounded-full overflow-hidden w-full">
-                <div className="flex items-center pl-4 pr-2 text-[#192951]">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#192951]">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 7.5v9a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 16.5v-9A2.25 2.25 0 014.5 5.25h15a2.25 2.25 0 012.25 2.25z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5l8.22 5.48a1.5 1.5 0 001.56 0L21 7.5" />
-                  </svg>
-                </div>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your Email Address"
-                  className="flex-1 min-w-0 px-4 py-3 sm:py-4 text-[#192951] placeholder-[#192951] focus:outline-none"
-                  style={{ fontFamily: 'Jost, sans-serif' }}
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-5 flex justify-center sm:px-7  py-4 sm:rounded-full  bg-[#192951] text-white font-semibold text-sm sm:text-lg  whitespace-nowrap sm:min-w-[200px]"
-                  style={{ fontFamily: 'LeBeauneNe' }}
-                >
-                  Submit
-                </button>
-              </div>
-            </motion.form>
-          ) : (
-            <motion.div
-              className="mx-auto mt-8 max-w-xl bg-white/90 rounded-xl p-6 backdrop-blur text-left"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="flex items-center gap-3">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900" style={{ fontFamily: 'LeBeauneNew, serif' }}>You're subscribed!</h3>
-                  <p className="text-gray-700" style={{ fontFamily: 'Jost, sans-serif' }}>We'll send updates to your inbox.</p>
-                </div>
-              </div>
-            </motion.div>
-          )}
+    <section id="services">
+      <div className="w-full">
+         <div
+          className="relative w-full h-[390px] sm:h-[420px] md:h-[450px] lg:h-[480px] overflow-hidden mb-16 rounded-b-2xl shadow-md"
+        //   initial={{ opacity: 0, y: -30 }}
+        //   whileInView={{ opacity: 1, y: 0 }}
+        //   viewport={{ once: false, amount: 0.3 }}
+        //   transition={{ duration: 0.6 }}
+        >
+          <img
+            src="/waitlist1.jpg"
+            alt="Alphera Academy Banner"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#00000025] to-transparent"></div>
         </div>
+
+        {/* The Process Section  */}
+        <div className="text-center mb-10">
+          <h2
+            className="text-[#004AAD] text-[47px] font-normal text-center mb-4"
+  style={{ fontFamily: "Foco, sans-serif", fontStyle: "normal", lineHeight: "normal" }}
+>
+            The Process
+          </h2>
+        </div>
+
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 px-6 flex-wrap mb-20">
+          {processSteps.map((step, index) => (
+            <div
+              key={step.id}
+              className="relative flex items-center justify-center"
+             style={{
+  color: "#FFF",
+  textAlign: "center",
+  fontFamily: "Foco",
+  fontSize: "28px",
+  fontStyle: "normal",
+  fontWeight: 400,
+  lineHeight: "normal"
+}} 
+
+            >
+              {/* Each Card */}
+              <motion.div
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.4 }}
+                className={`relative w-full h-[253px] sm:w-[220px] md:w-[240px] lg:w-[215px]
+                  rounded-2xl text-white text-center px-6 font-medium shadow-md`}
+                style={{
+                  backgroundColor: cardColors[index],
+                  fontFamily: "foco, sans-serif",
+                  // Added for vertical centering of text
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius:"30px"
+                }}
+              >
+                {/* Background Number - UPDATED STYLING */}
+                <span
+  className="absolute text-[150px] font-foco select-none"
+  style={{
+    color: step.id === 4 ? "#014298" : "rgba(0, 74, 173, 0.17)",
+    lineHeight: "1",
+  }}
+>
+  {step.id}
+</span>
+
+
+                {/* Step Text - Added pt-6 for vertical spacing */}
+                <p className="relative z-10 sm:text-lg leading-snug pt-6"
+style={{ fontFamily: "foco, sans-serif",fontSize:"28px" }}
+>
+                  {step.text}
+                </p>
+              </motion.div>
+
+              {/* Animated Arrow (only between cards) - UPDATED STYLING */}
+              {/* Animated Arrow (only between cards) - CUSTOM ARROW ADDED */}
+{index < processSteps.length - 1 && (
+  <motion.div
+    custom={index}
+    variants={arrowVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: false, amount: 0.4 }}
+    className="hidden sm:flex items-center justify-center mx-4"
+  >
+    {/* Your Custom Arrow SVG */}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="37"
+      height="48"
+      viewBox="0 0 37 48"
+      fill="none"
+      style={{ filter: "drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.25))" }}
+    >
+      <path
+        d="M34.1035 19.7751C36.8785 21.7702 36.8784 25.8993 34.1035 27.8944L7.91875 46.7203C4.61099 49.0984 1.37124e-06 46.7345 1.54932e-06 42.6606L3.19513e-06 5.00884C3.3732e-06 0.934904 4.611 -1.42898 7.91876 0.949181L34.1035 19.7751Z"
+        fill="#6EA1E4"
+      />
+    </svg>
+  </motion.div>
+)}
+
+            </div>
+          ))}
+        </div>
+ <motion.div
+          className="relative w-full h-[390px] sm:h-[420px] md:h-[450px] lg:h-[480px] overflow-hidden rounded-b-2xl shadow-md"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src="/waitlist2.jpg"
+            alt="Alphera Academy Banner"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#00000025] to-transparent"></div>
+        </motion.div>
+        {/*  UTL Section  */}
+        <section 
+          className="bg-[#EFEDCD] py-16 sm:py-20 md:py-24 text-[#004AAD] shadow-[0_8px_16px_rgba(0,74,173,0.3)] relative z-10"
+        >
+          <div className="w-full px-6 sm:px-10">
+            {/* Top Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-12">
+              {/* Left Content */}
+              <div>
+                <h2
+                  className="text-2xl sm:text-3xl font-semibold mb-4"
+                  style={{ fontFamily: "foco, sans-serif",
+                            fontSize: "47px",
+                            fontStyle: "normal",
+                            fontWeight: "400",
+                            lineHeight: "normal" ,
+                            color: "#004AAD",
+                            marginLeft:"65px"
+                            }}
+                >
+                  UTL – Understanding the Learner Process
+                </h2>
+                <p
+                  className="text-[#192951] text-base sm:text-lg leading-relaxed ml-17"
+                  style={{ fontFamily: "foco, sans-serif",
+                            fontSize: "24px",
+                            fontStyle: "normal",
+                            fontWeight: "400",
+                            lineHeight: "normal" ,
+                            color: "#004AAD" }}
+                >
+                  Before joining, each learner completes a UTL session that helps us
+                  understand their learning style, strengths, and aspirations — forming
+                  the foundation of their personalised journey.
+                </p>
+              </div>
+
+              {/* Right Placeholder Image */}
+              <div className="w-full flex">
+  <div
+    className="rounded-xl overflow-hidden w-[280px] sm:w-[320px] md:w-[406px] h-[200px] sm:h-[220px] md:h-[271px]"
+    style={{
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15)",
+    }}
+  >
+    <img
+      src="/waitlist3.jpg"      
+      alt="UTL process"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
+
+            </div>
+
+            {/* Bottom Two Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              <div
+                className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] text-white rounded-2xl w-[500] h-[253] shadow-md px-8 py-10"
+                style={{ fontFamily: "foco, sans-serif",
+                    marginLeft:"65px",
+                    borderRadius:"30px"
+                 }}
+              >
+                <h3 className="text-2xl font-semibold mb-3"
+                style={{color: "#FFFF",
+                fontFamily: "Foco",
+                fontSize: "47px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal"}}>
+    Acceptance</h3>
+                <p className="text-base leading-relaxed"
+                style={{color: "#82B3B4",
+                fontFamily: "Foco",
+                fontSize: "24px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal"}}
+                >
+                  Successful applicants receive an official offer and a tailored
+                  learning profile to begin their Alphera journey.
+                </p>
+              </div>
+
+              <div
+                className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] text-white rounded-2xl shadow-md px-8 py-10 w-[500px] h-[253px]"
+                style={{ fontFamily: "foco, sans-serif",
+                    borderRadius:"30px"
+                 }}
+              >
+                <h3 className="text-2xl font-semibold mb-3"
+                 style={{color: "#FFFF",
+                fontFamily: "Foco",
+                fontSize: "47px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal"}}
+                >Fees</h3>
+                <p className="text-base leading-relaxed"
+                   style={{color: "#82B3B4",
+                fontFamily: "Foco",
+                fontSize: "24px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal"}}
+                >
+                  Our tuition structure will be announced prior to launch, reflecting
+                  Alphera’s commitment to quality, innovation, and accessibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   );
 }
-
-

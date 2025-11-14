@@ -39,7 +39,7 @@ export default function VideoSection() {
 
   
   <img
-    src="/alphera.png"
+    src="/home1.jpg"
     alt="Background"
     className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
       showImage ? "opacity-100" : "opacity-0"
@@ -47,9 +47,11 @@ export default function VideoSection() {
   />
       </div>
       <div
-       className={`absolute bottom-0 left-0 w-full bg-white/80 backdrop-blur-[0px] text-white flex items-center justify-center text-2xl font-semibold transition-all duration-700 ${
-  showBar ? "h-[40%]" : "h-0"
-}`}
+       className={`absolute bottom-0 left-0 w-full 
+bg-[linear-gradient(0deg,rgba(173,63,0,0.80)_18.27%,rgba(144,144,144,0)_100%)] 
+backdrop-blur-[0px] text-white flex items-center justify-center text-2xl font-semibold 
+transition-all duration-700 ${showBar ? "h-[50%]" : "h-0"}`}
+
 
       >
        <p
@@ -58,22 +60,30 @@ export default function VideoSection() {
   }`}
 >
   <span
-  className="block mb-6 text-center align-middle font-normal text-[36px] leading-[100%] tracking-[0%] text-[#004AAD]"
-  style={{ fontFamily: "Jost, sans-serif" }}
+  className="block mb-6 text-center align-middle font-normal text-[36px] leading-[100%] tracking-[0%]"
+  style={{ fontFamily: "Foco",
+          color: "#FFF",
+          fontWeight: "400",
+          lineHeight: "normal"
+            }}
 >
   Welcome to Alphera Academy
 </span>
 
 <span
-  className="block mb-6 text-center align-middle font-normal text-[20px] leading-[100%] tracking-[0%] font-[regular] text-[#004AAD]"
-style={{ fontFamily: "Jost, sans-serif" }}
+  className="block mb-6 text-center align-middle font-normal text-[20px] leading-[100%] tracking-[0%] font-[normal] "
+style={{  fontFamily: "Foco",
+          color: "#FFF",
+          fontWeight: "400",
+          lineHeight: "normal"
+ }}
 >
   A new kind of school where innovation meets purpose. We combine the <br/>
   best of the British and Arabic curricula with AI-driven personalisation <br/>
   preparing students not just for exams, but for life.
 </span>
 <span
- className="font-[Foco,sans-serif] font-black text-[25px] leading-[100%] tracking-[0%] text-center align-middle text-[#004AAD]"
+ className="font-[Foco] font-black text-[25px] leading-[100%] tracking-[0%] text-center align-middle "
 >
   Join the Waiting List
 </span>
