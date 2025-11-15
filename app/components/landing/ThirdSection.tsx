@@ -96,7 +96,7 @@ export default function ThirdSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="E-Mail Here"
-                  className="flex-1 px-5 py-3 text-[#192951] placeholder-[#9EC7FD] focus:outline-none rounded-l-full"
+                  className="flex-1 px-5 py-3 text-[#192951] placeholder-[#82B3B4] focus:outline-none rounded-l-full"
                   style={{ fontFamily: "Foco, sans-serif" }}
                   required
                 />

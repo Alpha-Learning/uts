@@ -121,7 +121,7 @@ const cardVariants: Variants = {
             <img
               src="/op2.jpg"
               alt="Alphera Academy Banner"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-left "
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#00000025] to-transparent h-[431px]"></div>
           </motion.div>
@@ -281,7 +281,7 @@ lineHeight: "normal"
         {/* Card Text */}
         <div className="px-3 mt-5">
           <h4
-            className="text-[20px] font-medium mb-2"
+            className="text-[20px] mb-2"
             style={{
               fontFamily: "Foco",
               color: "#FFFFFF",

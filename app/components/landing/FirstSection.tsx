@@ -48,9 +48,10 @@ export default function FirstSection() {
             <img
               src="/au1.jpg"
               alt="Alphera Academy Banner"
-              className="w-full h-full object-cover"
+      className=" object-contain"
+
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#00000025] to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#00000025] to-transparent h-[497px]"></div>
           </div>
 
           {/*  OUR STORY */}
@@ -106,91 +107,83 @@ export default function FirstSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <img
-              src="/au2.jpg"
-              alt="Alphera Academy Banner"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00000020] to-transparent"></div>
+{/* <div className="w-full h-[480px] overflow-hidden"> */}
+  <img
+    src="/au2.jpg"
+    alt="Alphera Academy Banner"
+    className="w-full h-full object-fill"
+    style={{ transform: "scaleX(-1)" }}
+  />
+{/* </div> */}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#00000020] to-transparent"
+            ></div>
           </motion.div>
 
 
           {/*  Mission & Vision Section  */}
-<section className="w-screen bg-[#E6F3F5] py-16 sm:py-20 md:py-24 text-center flex flex-col items-center justify-center">
-  <div className="max-w-6xl mx-auto px-6 sm:px-10">
+<section className=" bg-[#EFEDCD] py-16 sm:py-20 md:py-24 flex flex-col items-center justify-center overflow-hidden">
+  <div className="max-w-6xl mx-auto px-6 sm:px-10 text-center">
+
     {/* Heading */}
     <h2
-      className="text-[#004AAD] text-[36px] sm:text-[47px] font-[400] flex items-center justify-center gap-4"
-      style={{   fontFamily: "Foco",
-                fontSize: "47px",
-                fontWeight: 400,
-                color: "#004AAD",
-                textAlign: "center",
-                fontStyle: "normal",
-                lineHeight: "normal" }}
+      className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 
+                 text-[#004AAD] font-normal leading-normal"
+      style={{ fontFamily: "Foco" }}
     >
-      <span style={{   fontFamily: "Foco",
-                fontSize: "47px",
-                fontWeight: 400,
-                color: "#004AAD",
-                textAlign: "center",
-                fontStyle: "normal",
-                lineHeight: "normal" }}>Mission</span>
-      <span className="text-[50px] sm:text-[56px] font-light text-[#004AAD]"
-      style={{color: "#004AAD",
-textAlign: "center",
-fontFamily: "Foco",
-fontSize: "96px",
-fontStyle: "normal",
-fontWeight: "300",
-lineHeight: "normal",}}
-      >&</span>
-      <span style={{   fontFamily: "Foco",
-                fontSize: "47px",
-                fontWeight: 400,
-                color: "#004AAD",
-                textAlign: "center",
-                fontStyle: "normal",
-                lineHeight: "normal" }}>Vision</span>
+      <span className="text-[32px] sm:text-[47px]">Mission</span>
+
+      <span
+        className="text-[50px] sm:text-[96px] font-light"
+        style={{ fontFamily: "Foco" }}
+      >
+        &
+      </span>
+
+      <span className="text-[32px] sm:text-[47px]">Vision</span>
     </h2>
 
-    {/* Divider & Two Columns */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8  text-[#004AAD]">
+    {/* Content */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-[#004AAD]">
+
       {/* Mission */}
-      <div className="text-[16px] sm:text-[24px] leading-relaxed px-4 sm:px-6"
-      style={{fontFamily: "Foco",
-                fontWeight: 400,
-                color: "#004AAD",
-                textAlign: "right",
-                fontStyle: "normal",
-                lineHeight: "normal"}}>
-        Empower every learner with the skills, confidence, and mindset to thrive
-        in a changing world.
+      <div
+        className="text-[16px] sm:text-[22px] leading-relaxed text-center md:text-right px-2 sm:px-6"
+        style={{ fontFamily: "Foco", fontWeight: 400 }}
+      >
+        Empower every learner with the skills, confidence, and mindset to
+        thrive in a changing world.
       </div>
 
       {/* Vision */}
-      <div className="text-[16px] sm:text-[24px] leading-relaxed px-4 sm:px-6 border-t md:border-t-0 md:border-l md:pl-10"
-      style={{  fontWeight: 400,
-                color: "#004AAD",
-                textAlign: "left",
-                fontStyle: "normal",
-                lineHeight: "normal"}}>
+      <div
+        className="text-[16px] sm:text-[22px] leading-relaxed text-center md:text-left px-2 sm:px-6 
+                   md:border-l md:pl-10"
+        style={{ fontFamily: "Foco", fontWeight: 400 }}
+      >
         Create Bahrain’s first fully personalised, AI-enhanced learning
         environment where education adapts to each learner.
       </div>
+
     </div>
   </div>
 </section>
 
 
+
+
           {/*  WHY US */}
           <section className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] overflow-hidden">
             <img
-              src="/au3.jpg"
-              alt="Why Alphera"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-              style={{ transform: "scaleX(-1)" }}
-            />
+    src="/au3.jpg"
+    alt="Why Alphera"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+    style={{ transform: "scaleX(-1)" }}
+  />
+
+  {/* White left shade */}
+  <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white to-transparent"></div>
+
             <div className="absolute inset-0 bg-[#00000033]"></div>
 
             <motion.div
@@ -206,8 +199,7 @@ lineHeight: "normal",}}
                   fontFamily: "Foco",
                   fontWeight: 400,
                   fontSize: "47px",
-                  lineHeight: "100%",
-                  letterSpacing: "0px",
+                  lineHeight: "normal",
                   color: "#004AAD",
                 }}
               >
@@ -220,8 +212,8 @@ lineHeight: "normal",}}
                   fontWeight: 400,
                   fontStyle: "normal",
                   fontSize: "24px",
-                  lineHeight: "100%",
-                  letterSpacing: "0px",
+                  lineHeight: "normal",
+                  // letterSpacing: "0px",
                   color: "#004AAD",
                 }}
               >
