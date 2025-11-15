@@ -108,15 +108,23 @@ export default function WaitingList() {
                 }}
               >
                 {/* Background Number - UPDATED STYLING */}
-                <span
-  className="absolute text-[150px] font-foco select-none"
+              <span
+  className="absolute select-none text-center"
   style={{
     color: step.id === 4 ? "#014298" : "rgba(0, 74, 173, 0.17)",
-    lineHeight: "1",
+    fontFamily: "Foco",
+    fontSize: "250px",
+    fontStyle: "normal",
+    fontWeight: 300,
+    lineHeight: "normal",
+    // opacity: 0.19,
+    // width: "149px",
+    // height: "170px",
   }}
 >
   {step.id}
 </span>
+
 
 
                 {/* Step Text - Added pt-6 for vertical spacing */}
@@ -174,118 +182,127 @@ style={{ fontFamily: "foco, sans-serif",fontSize:"28px" }}
         </motion.div>
         {/*  UTL Section  */}
         <section 
-          className="bg-[#EFEDCD] py-16 sm:py-20 md:py-24 text-[#004AAD] shadow-[0_8px_16px_rgba(0,74,173,0.3)] relative z-10"
+  className="bg-[#EFEDCD] py-16 sm:py-20 md:py-24 text-[#004AAD] shadow-[0_8px_16px_rgba(0,74,173,0.3)] relative z-10"
+>
+  <div className="w-full px-6 sm:px-10">
+    
+    {/* Top Row */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-12">
+
+      {/* Left Content */}
+      <div className="text-center md:text-left">
+        <h2
+          className="text-3xl font-semibold mb-4"
+          style={{
+            fontFamily: "foco, sans-serif",
+            fontSize: "47px",
+            fontStyle: "normal",
+            fontWeight: "400",
+            lineHeight: "normal",
+            color: "#004AAD",
+          }}
         >
-          <div className="w-full px-6 sm:px-10">
-            {/* Top Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-12">
-              {/* Left Content */}
-              <div>
-                <h2
-                  className="text-2xl sm:text-3xl font-semibold mb-4"
-                  style={{ fontFamily: "foco, sans-serif",
-                            fontSize: "47px",
-                            fontStyle: "normal",
-                            fontWeight: "400",
-                            lineHeight: "normal" ,
-                            color: "#004AAD",
-                            marginLeft:"65px"
-                            }}
-                >
-                  UTL – Understanding the Learner Process
-                </h2>
-                <p
-                  className="text-[#192951] text-base sm:text-lg leading-relaxed ml-17"
-                  style={{ fontFamily: "foco, sans-serif",
-                            fontSize: "24px",
-                            fontStyle: "normal",
-                            fontWeight: "400",
-                            lineHeight: "normal" ,
-                            color: "#004AAD" }}
-                >
-                  Before joining, each learner completes a UTL session that helps us
-                  understand their learning style, strengths, and aspirations — forming
-                  the foundation of their personalised journey.
-                </p>
-              </div>
+          UTL – Understanding the Learner Process
+        </h2>
 
-              {/* Right Placeholder Image */}
-              <div className="w-full flex">
-  <div
-    className="rounded-xl overflow-hidden w-[280px] sm:w-[320px] md:w-[406px] h-[200px] sm:h-[220px] md:h-[271px]"
-    style={{
-      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15)",
-    }}
-  >
-    <img
-      src="/waitlist3.jpg"      
-      alt="UTL process"
-      className="w-full h-full object-cover"
-    />
+        <p
+          className="text-[#192951] text-lg leading-relaxed"
+          style={{
+            fontFamily: "foco, sans-serif",
+            fontSize: "24px",
+            fontStyle: "normal",
+            fontWeight: "400",
+            lineHeight: "normal",
+            color: "#004AAD",
+          }}
+        >
+          Before joining, each learner completes a UTL session that helps us
+          understand their learning style, strengths, and aspirations — forming
+          the foundation of their personalised journey.
+        </p>
+      </div>
+
+      {/* Right Image */}
+      <div className="w-full flex justify-center md:justify-end">
+        <div
+          className="rounded-xl overflow-hidden w-[280px] sm:w-[320px] md:w-[406px] h-[200px] sm:h-[220px] md:h-[271px]"
+          style={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15)" }}
+        >
+          <img
+            src="/waitlist3.jpg"
+            alt="UTL process"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      {/* Acceptance Card */}
+      <div
+        className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] text-white rounded-2xl shadow-md px-8 py-10 w-full"
+        style={{ fontFamily: "foco, sans-serif" }}
+      >
+        <h3
+          style={{
+            color: "#FFFF",
+            fontFamily: "Foco",
+            fontSize: "47px",
+            fontWeight: "400",
+          }}
+          className="mb-3"
+        >
+          Acceptance
+        </h3>
+
+        <p
+          style={{
+            color: "#82B3B4",
+            fontFamily: "Foco",
+            fontSize: "24px",
+            fontWeight: "400",
+          }}
+        >
+          Successful applicants receive an official offer and a tailored
+          learning profile to begin their Alphera journey.
+        </p>
+      </div>
+
+      {/* Fees Card */}
+      <div
+        className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] text-white rounded-2xl shadow-md px-8 py-10 w-full"
+        style={{ fontFamily: "foco, sans-serif" }}
+      >
+        <h3
+          style={{
+            color: "#FFFF",
+            fontFamily: "Foco",
+            fontSize: "47px",
+            fontWeight: "400",
+          }}
+          className="mb-3"
+        >
+          Fees
+        </h3>
+
+        <p
+          style={{
+            color: "#82B3B4",
+            fontFamily: "Foco",
+            fontSize: "24px",
+            fontWeight: "400",
+          }}
+        >
+          Our tuition structure will be announced prior to launch, reflecting
+          Alphera’s commitment to quality, innovation, and accessibility.
+        </p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-            </div>
-
-            {/* Bottom Two Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2">
-              <div
-                className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] text-white rounded-2xl w-[500] h-[253] shadow-md px-8 py-10"
-                style={{ fontFamily: "foco, sans-serif",
-                    marginLeft:"65px",
-                    borderRadius:"30px"
-                 }}
-              >
-                <h3 className="text-2xl font-semibold mb-3"
-                style={{color: "#FFFF",
-                fontFamily: "Foco",
-                fontSize: "47px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal"}}>
-    Acceptance</h3>
-                <p className="text-base leading-relaxed"
-                style={{color: "#82B3B4",
-                fontFamily: "Foco",
-                fontSize: "24px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal"}}
-                >
-                  Successful applicants receive an official offer and a tailored
-                  learning profile to begin their Alphera journey.
-                </p>
-              </div>
-
-              <div
-                className="bg-gradient-to-r from-[#2673DB] to-[#004AAD] text-white rounded-2xl shadow-md px-8 py-10 w-[500px] h-[253px]"
-                style={{ fontFamily: "foco, sans-serif",
-                    borderRadius:"30px"
-                 }}
-              >
-                <h3 className="text-2xl font-semibold mb-3"
-                 style={{color: "#FFFF",
-                fontFamily: "Foco",
-                fontSize: "47px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal"}}
-                >Fees</h3>
-                <p className="text-base leading-relaxed"
-                   style={{color: "#82B3B4",
-                fontFamily: "Foco",
-                fontSize: "24px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal"}}
-                >
-                  Our tuition structure will be announced prior to launch, reflecting
-                  Alphera’s commitment to quality, innovation, and accessibility.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </section>
   );

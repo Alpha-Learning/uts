@@ -77,32 +77,34 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-        scrollY > 100
-          ? "bg-white/80 backdrop-blur-lg shadow-lg"
-          : "bg-transparent"
-      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
-    >
+    
+  className={`w-full fixed top-0 z-50 transition-all duration-300 ${
+    scrollY > 100
+      ? "bg-white/5 backdrop-blur-lg shadow-lg"
+      : "bg-transparent"
+  } translate-y-0`}
+>
       {/* Desktop */}
-      <div className="hidden lg:flex items-center justify-center h-20 bg-[#E9F2FEDB]/[0.86] backdrop-blur-md">
+      <div className="hidden lg:flex items-center justify-center h-20 bg-[#E9F2FEDB]/[0.76] ">
         <nav className="w-full max-w-7xl px-6">
           <div className="flex justify-center items-center gap-x-20">
             {/* Left links */}
             <ul className="flex items-center gap-20 justify-center">
               <li>
-                <Link
-                  className={`font-semibold ${
-                    pathname === "/aboutus" ? "text-[#004AAD]" : "text-[#82B3B4]"
-                  } nav-link`}
-                  href="/aboutus"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  ABOUT US
-                </Link>
+             <Link
+  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
+    pathname === "/aboutus" ? "text-[#004AAD]" : "text-[#82B3B4]"
+  } nav-link`}
+  href="/aboutus"
+  onClick={() => setMobileOpen(false)}
+>
+  ABOUT US
+</Link>
+
               </li>
               <li>
                 <Link
-                  className={`font-medium ${
+                  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
                     pathname === "/ourprogram"
                       ? "text-[#004AAD]"
                       : "text-[#82B3B4]"
@@ -116,15 +118,23 @@ export default function Header() {
             </ul>
 
             {/* Center logo */}
-            <div className="flex items-center justify-center">
+            {/* <div className="flex items-center justify-center">
+              <img src="/Group.png" alt="logo" className="w-18 h-15" />
+            </div> */}
+
+
+<Link href="/">
+  <div className="flex items-center justify-center">
               <img src="/Group.png" alt="logo" className="w-18 h-15" />
             </div>
+</Link>
+
 
             {/* Right links */}
             <ul className="flex items-center gap-12">
               <li>
                 <Link
-                  className={`font-medium ${
+                  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
                     pathname === "/waitlist"
                       ? "text-[#004AAD]"
                       : "text-[#82B3B4]"
@@ -138,7 +148,7 @@ export default function Header() {
               <li>
                 <a
                   href="#contact"
-                  className={`font-medium ${
+                  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
                     activeId === "contact"
                       ? "text-[#004AAD]"
                       : "text-[#82B3B4]"
@@ -189,7 +199,7 @@ export default function Header() {
             <ul className="grid grid-cols-1 gap-3">
               <li>
                 <Link
-                  className={`font-semibold ${
+                  className={`font-normal ${
                     pathname === "/aboutus" ? "text-[#004AAD]" : "text-[#82B3B4]"
                   } nav-link`}
                   href="/aboutus"
@@ -200,7 +210,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  className={`font-medium ${
+                  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
                     pathname === "/ourprogram"
                       ? "text-[#004AAD]"
                       : "text-[#82B3B4]"
@@ -213,7 +223,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  className={`font-medium ${
+                  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
                     pathname === "/waitlist"
                       ? "text-[#004AAD]"
                       : "text-[#82B3B4]"
@@ -227,7 +237,7 @@ export default function Header() {
               <li>
                 <a
                   href="#contact"
-                  className={`font-medium ${
+                  className={`text-center font-[Foco] text-[16px] font-normal leading-normal uppercase ${
                     activeId === "contact"
                       ? "text-[#004AAD]"
                       : "text-[#82B3B4]"
