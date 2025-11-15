@@ -243,7 +243,7 @@ const cardVariants: Variants = {
         </motion.div>
 
         {/*  Alphera Smart Learning System Cards  */}
-      <div className="bg-[#EFEDCD] py-20 px-6 lg:px-12">
+      <div className="bg-[#E4D2C5] py-20 px-6 lg:px-12">
   <h2
     className="text-center text-3xl md:text-4xl font-semibold text-[#004AAD] mb-20"
     style={{ fontFamily: "Foco,regular",
@@ -267,19 +267,20 @@ lineHeight: "normal"
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.3 }}
-        className="relative bg-[#004AAD] text-white rounded-xl w-[180px] h-[320px] flex flex-col items-center text-center shadow-lg pt-[60px] pb-6"
+        className="relative bg-[#004AAD] text-white rounded-xl w-[198px] h-[348px] flex flex-col items-center text-center shadow-lg pt-[60px] pb-6"
       >
         {/* Icon Container */}
         <div className="absolute -top-[15px]">
           <img
             src={card.img}
             alt={card.title}
-            className="w-[120px] h-[120px] object-contain"
+            className="w-[134px] h-[134px] object-contain"
+            style={{margin:"10px"}}
           />
         </div>
 
         {/* Card Text */}
-        <div className="px-3 mt-5">
+        <div className="px-3 mt-15">
           <h4
             className="text-[20px] mb-2"
             style={{
